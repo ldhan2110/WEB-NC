@@ -15,12 +15,8 @@ import Button from '@material-ui/core/Button';
 import useStyles from './styles';
 import MessagePopup from '../../../components/MessageBox';
 import {DISPLAY_MESSAGE} from '../../../redux/message/constants';
-import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { blue } from '@material-ui/core/colors';
-import {
-  Typography
-} from "@material-ui/core";
 import LockIcon from '@material-ui/icons/Lock';
 
 //IMPORT REGISTER
@@ -118,26 +114,10 @@ const LoginPage = (props) => {
       setValues({ ...values, showPassword: !values.showPassword });
     };
 
-
-    const handleClickKeepSignIn = () => {
-      setValues({ ...values, isKeepedLogin: !values.isKeepedLogin });
-    }
-
     const handleMouseDownPassword = (event) => {
       event.preventDefault();
     };
 
-    //HANDLE OPEN REGISTER POPUP
-    const handleOpenRegister = ()=> {
-      setCheckLogin(false);
-      setValues({
-        username: '',
-        password: '',
-      })
-      setCheckError(false);
-      setError(false);
-      openRegister(!isOpenRegister);
-    };
 
     //HANDLE LOGIN REQUEST BUTTON
     const handleClickLogin = (event) => {
@@ -164,12 +144,12 @@ const LoginPage = (props) => {
     <RegisterPage isOpen = {isOpenRegister} setOpenState = {openRegister}/>
         <Grid container>
         <Grid item xs={7} style={{backgroundColor: 'white', height: '100vh'}}>
-          <img className={classes.banner} src = "/img/logo-banner.png" alt= "banner"/>
+          <img className={classes.banner} src = "/img/logo-banner.jpg" alt= "banner"/>
         </Grid>
         <Grid item xs={5}>
             <form className = {classes.formLogin}>
               <div>
-                <img className={classes.logo} src="../img/Logo1zz.png" alt = "logo-banner"/>
+                <img className={classes.logo} src="../img/logo.png" alt = "logo-banner"/>
               </div>  
 
                 <FormControl fullWidth variant="outlined">
@@ -222,17 +202,6 @@ const LoginPage = (props) => {
             {loading && <CircularProgress size={24} style={{color: blue[500],position: 'absolute',top: '50%',left: '50%',marginTop: -12,marginLeft: -12,}} />}
           </Button>          
         </div>
-        <div className = {classes.btnGroup}>
-          <Typography component="h1" variant="subtitle1" gutterBottom>
-              Don't have an account?
-          </Typography>
-          <Button variant="contained" startIcon={<VpnKeyIcon/>} onClick={handleOpenRegister}>
-            Sign Up now!
-          </Button>
-        </div>
-        <span>
-          <a href="auth/forgot-password">Forgot your password?</a>
-        </span>
           </form>
         </Grid>
       </Grid>

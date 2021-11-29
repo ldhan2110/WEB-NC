@@ -1,0 +1,9 @@
+{
+    "server": {
+        "HOST": "localhost",
+        "PORT": 8000
+    },
+    "dbConfig": {
+        "URI": "mongodb+srv://ldhan2110:hoangan123@auctiondb.c5z8v.mongodb.net/auction-db?retryWrites=true&w=majority"
+    }
+}
