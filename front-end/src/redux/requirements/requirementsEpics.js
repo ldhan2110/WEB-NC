@@ -137,7 +137,7 @@ export  const getAllRequirementsEpic = (action$, state$) => action$.pipe(
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
         type: actions.GET_ALL_ACTIVE_REQUIREMENTS_FAILED,
@@ -172,7 +172,7 @@ export  const getAllRequirementsEpic = (action$, state$) => action$.pipe(
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
         type: actions.DELETE_REQUIREMENTS_FAILED,

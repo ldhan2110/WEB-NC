@@ -35,7 +35,7 @@ export  const getAllProjectEpic = (action$, state$) => action$.pipe(
       const {status} = error.response.data;
       if (status ===  401) {
         localStorage.clear();
-        window.location.replace('/login');
+        // //window.location.replace('/login');
       } else
       return of({
         type: actions.GET_ALL_PROJECTS_FAILED,
@@ -70,7 +70,7 @@ export  const getAllProjectEpic = (action$, state$) => action$.pipe(
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          // //window.location.replace('/login');
         } else
         return of({
         type: actions.ADD_NEW_PROJECT_FAILED,
@@ -105,7 +105,7 @@ export  const getAllProjectEpic = (action$, state$) => action$.pipe(
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          ////window.location.replace('/login');
         } else
         return of({
         type: actions.UPDATE_PROJECT_FAILED,
@@ -140,7 +140,7 @@ export  const getAllProjectEpic = (action$, state$) => action$.pipe(
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          ////window.location.replace('/login');
         } else
         return of({
         type: actions.DELETE_PROJECT_FAILED,
@@ -175,7 +175,7 @@ export  const getAllProjectEpic = (action$, state$) => action$.pipe(
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          ////window.location.replace('/login');
         } else
         return of({
         type: actions.GET_PROJECTS_BY_ID_FAILED,
@@ -212,8 +212,9 @@ export  const getAllProjectEpic = (action$, state$) => action$.pipe(
       catchError (error => {
         const {status} = error.response.data;
         if (status ===  401) {
-          localStorage.clear();
-          window.location.replace('/login');
+          // localStorage.clear();
+          // //window.location.replace('/login');
+          
         } else
         return of({
         type: actions.CHANGE_ROLE_MEMBER_FAILED,

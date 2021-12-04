@@ -6,6 +6,11 @@ const styles = {
         }
     },
 
+    img:{
+        objectFit: "cover",
+        height: "100%"
+    },
+
     loginHeader:{
         backgroundColor: 'white',
     },

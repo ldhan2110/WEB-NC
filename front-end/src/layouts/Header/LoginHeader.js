@@ -57,7 +57,7 @@ const LoginHeader = (props) => {
              <Grid item xs = {10}>
              {/*<img src ="/img/Logo1zz.png" alt="logo"/>*/}
               <IconButton className={classes.root} onClick={handleLogoClick}>
-        <img src ="/img/Logo1zz.png" alt="logo"/>
+        {/* <img src ="/img/logo.png" alt="logo"/> */}
               </IconButton> 
           </Grid>
           </Hidden> 

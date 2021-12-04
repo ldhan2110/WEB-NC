@@ -35,7 +35,7 @@ export  const getAllTestplanEpic = (action$, state$) => action$.pipe(
       const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
       type: actions.GET_ALL_TESTPLAN_FAILED,
@@ -79,7 +79,7 @@ export  const getAllTestplanEpic = (action$, state$) => action$.pipe(
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
         type: actions.ADD_NEW_TESTPLAN_FAILED,
@@ -122,7 +122,7 @@ export  const getAllTestplanEpic = (action$, state$) => action$.pipe(
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
         type: actions.UPDATE_TESTPLAN_FAILED,
@@ -159,7 +159,7 @@ export  const getAllTestplanEpic = (action$, state$) => action$.pipe(
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
         type: actions.GET_ALL_ACTIVE_TESTPLAN_FAILED,
@@ -194,7 +194,7 @@ export  const getAllTestplanEpic = (action$, state$) => action$.pipe(
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
         type: actions.DELETE_TESTPLAN_FAILED,

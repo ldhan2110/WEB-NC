@@ -119,8 +119,8 @@ const ProfilePage = (props)=>{
   const history = useHistory();
 
   useEffect(()=>{
-    user.getCurrentUserSuccess = null;
-    getCurrentProfileReq();
+    // user.getCurrentUserSuccess = null;
+    // getCurrentProfileReq();
   },[]);
 
     useEffect(()=>{
@@ -312,11 +312,7 @@ const handleClickShowPasswordd = () => {
                   <TextField id="email" label="Email" variant="outlined"  fullWidth required disabled={true}
                   value={profileInfo.email || ''} onChange={handleChangeProfile('email')}/>
 
-                  <TextField id="phone" label="Phone Number" variant="outlined"  fullWidth 
-                  value={profileInfo.phonenumber || ''} onChange={handleChangeProfile('phonenumber')}/>
-
-                  <TextField id="Introductions" label="Introductions" variant="outlined"  fullWidth multiline 
-                  rows={3} value={profileInfo.introduction || ''} onChange={handleChangeProfile('introduction')}/>
+                  
                   <div className = {classes.btnGroup}>
                       <Button variant="contained" color="primary"  startIcon={<SaveIcon/>} onClick={handleUpdateProfile}>Save Changes
                       {/*{loading && <CircularProgress size={24} className={classes.buttonProgress} />} */}
@@ -433,4 +429,5 @@ const handleClickShowPasswordd = () => {
     );
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(withStyles(styles)(ProfilePage));
+//connect(mapStateToProps,mapDispatchToProps)
+export default (withStyles(styles)(ProfilePage));

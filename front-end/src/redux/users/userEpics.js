@@ -35,7 +35,7 @@ import {API_ADDR} from '../constants';
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
         type: actions.GET_ALL_USERS_FAILED,
@@ -70,7 +70,7 @@ import {API_ADDR} from '../constants';
           const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
           type: actions.GET_ALL_USERS_OF_PROJECT_FAILED,
@@ -108,7 +108,7 @@ import {API_ADDR} from '../constants';
           const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
           type: actions.ADD_USERS_TO_PROJECT_FAILED,
@@ -143,7 +143,7 @@ import {API_ADDR} from '../constants';
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
         type: actions.DELETE_USER_OF_PROJECT_FAILED,
@@ -184,7 +184,7 @@ import {API_ADDR} from '../constants';
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
         type: actions.ADD_NEW_USER_FAILED,
@@ -219,7 +219,7 @@ import {API_ADDR} from '../constants';
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
         type: actions.GET_USER_BYID_FAILED,
@@ -260,7 +260,7 @@ import {API_ADDR} from '../constants';
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
         type: actions.UPDATE_USER_FAILED,
@@ -295,7 +295,7 @@ import {API_ADDR} from '../constants';
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
         type: actions.DELETE_USER_FAILED,
@@ -333,7 +333,7 @@ import {API_ADDR} from '../constants';
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
         type: actions.UPDATE_PASSWORD_FAILED,
@@ -372,7 +372,7 @@ import {API_ADDR} from '../constants';
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
         type: actions.UPDATE_PROFILE_FAILED,
@@ -407,7 +407,7 @@ import {API_ADDR} from '../constants';
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
         type: actions.GET_CURRENT_USER_FAILED,
@@ -445,7 +445,7 @@ import {API_ADDR} from '../constants';
           const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
           type: actions.VERIFY_USERS_TO_PROJECT_FAILED,
@@ -482,7 +482,7 @@ import {API_ADDR} from '../constants';
             const {status} = error.response.data;
             if (status ===  401) {
               localStorage.clear();
-              window.location.replace('/login');
+              //window.location.replace('/login');
             } else
             return of({
             type: actions.UPDATE_AVATAR_FAILED,
@@ -518,7 +518,7 @@ import {API_ADDR} from '../constants';
               const {status} = error.response.data;
             if (status ===  401) {
               localStorage.clear();
-              window.location.replace('/login');
+              //window.location.replace('/login');
             } else
             return of({
               type: actions.GET_ALL_MEMBERMANTIS_FAILED,
@@ -558,7 +558,7 @@ import {API_ADDR} from '../constants';
                 const {status} = error.response.data;
               if (status ===  401) {
                 localStorage.clear();
-                window.location.replace('/login');
+                //window.location.replace('/login');
               } else
               return of({
                 type: actions.ADD_MEMBERMANTIS_FAILED,
@@ -598,7 +598,7 @@ import {API_ADDR} from '../constants';
               const {status} = error.response.data;
               if (status ===  401) {
                 localStorage.clear();
-                window.location.replace('/login');
+                //window.location.replace('/login');
               } else
               return of({
               type: actions.DELETE_MEMBERMANTIS_FAILED,
@@ -637,7 +637,7 @@ import {API_ADDR} from '../constants';
                 const {status} = error.response.data;
                 if (status ===  401) {
                   localStorage.clear();
-                  window.location.replace('/login');
+                  //window.location.replace('/login');
                 } else
                 return of({
                 type: actions.CHANGE_ROLE_MEMBER_MANTIS_FAILED,

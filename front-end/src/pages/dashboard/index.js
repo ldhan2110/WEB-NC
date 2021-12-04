@@ -81,12 +81,11 @@ const  Dashboard = (props) => {
     labels: ["Passed", "Failed", "Blocked", "Not Executed"],
     datasets: [
       {
-        data: [],
+        data: [5,6,7],
         backgroundColor: [
           PASSED,
           FAILED,
           BLOCKED,
-          NOT_EXECUTE
         ],
         borderWidth: 5
       }
@@ -98,23 +97,23 @@ const  Dashboard = (props) => {
     datasets: [
     {
       type: 'bar',
-      label: 'Test Failed',
+      label: 'Not Sold',
       backgroundColor: FAILED,
-      data: [],
+      data: [0,1,2,3,4,5,6,7,8,9,10,11],
       borderColor: 'white',
       borderWidth: 2,
     },
     {
       type: 'bar',
-      label: 'Test Passed',
+      label: 'Sold',
       backgroundColor: PASSED,
-      data: [],
+      data: [0,1,2,3,4,5,6,7,8,9,10,11],
     },
     {
       type: 'bar',
-      label: 'Test Blocked',
+      label: 'In Auction',
       backgroundColor: BLOCKED,
-      data: [],
+      data: [0,1,2,3,4,5,6,7,8,9,10,11],
     },
   ],
   })
@@ -127,80 +126,80 @@ const  Dashboard = (props) => {
   }
 
   useEffect(()=> {
-    resetDashboard();
-    getEffortReq();
-    getExecOverviewReq();
-    getMultiChartReq();
-    getSixExecutionReq();
+    // resetDashboard();
+    // getEffortReq();
+    // getExecOverviewReq();
+    // getMultiChartReq();
+    // getSixExecutionReq();
   },[]) 
 
-  //EFFORT
-  useEffect(()=> {
-  if (effortsData.data !== null){
-    setEfforts({
-      labels:  effortsData.data.labels,
-      datasets: [
-        {
-          label: 'Efforts',
-          data: effortsData.data.data,
-          backgroundColor: effortsData.data.data.map(()=>generateColor()),
-        },
-  ],
-    })
-  }
-  },[effortsData.data])
+  // //EFFORT
+  // useEffect(()=> {
+  // if (effortsData.data !== null){
+  //   setEfforts({
+  //     labels:  effortsData.data.labels,
+  //     datasets: [
+  //       {
+  //         label: 'Efforts',
+  //         data: effortsData.data.data,
+  //         backgroundColor: effortsData.data.data.map(()=>generateColor()),
+  //       },
+  // ],
+  //   })
+  // }
+  // },[effortsData.data])
 
-  //EXEC OVERVIEW
-  useEffect(()=> {
-   if (execOverviewData.data != null) {
-    setExecOverview({
-      labels: ["Passed", "Failed", "Blocked", "Not Executed"],
-      datasets: [
-        {
-          data: execOverviewData.data.data,
-          backgroundColor: [
-            PASSED,
-            FAILED,
-            BLOCKED,
-            NOT_EXECUTE
-          ],
-          borderWidth: 5
-        }
-      ]
-    })
-   }
-  },[execOverviewData.data])
+  // //EXEC OVERVIEW
+  // useEffect(()=> {
+  //  if (execOverviewData.data != null) {
+  //   setExecOverview({
+  //     labels: ["Passed", "Failed", "Blocked", "Not Executed"],
+  //     datasets: [
+  //       {
+  //         data: execOverviewData.data.data,
+  //         backgroundColor: [
+  //           PASSED,
+  //           FAILED,
+  //           BLOCKED,
+  //           NOT_EXECUTE
+  //         ],
+  //         borderWidth: 5
+  //       }
+  //     ]
+  //   })
+  //  }
+  // },[execOverviewData.data])
 
-  //MULTI-CHART
-  useEffect(()=>{
-    if (multiChart.data != null) {
-      setDataMultiChart({
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-        datasets: [
-    {
-      type: 'bar',
-      label: 'Test Failed',
-      backgroundColor: FAILED,
-      data: multiChart.data.fail === null ? [] : multiChart.data.fail,
-      borderColor: 'white',
-      borderWidth: 2,
-    },
-    {
-      type: 'bar',
-      label: 'Test Passed',
-      backgroundColor: PASSED,
-      data: multiChart.data.pass === null ? [] : multiChart.data.pass,
-    },
-    {
-      type: 'bar',
-      label: 'Test Blocked',
-      backgroundColor: BLOCKED,
-      data: multiChart.data.block === null ? [] : multiChart.data.block,
-    },
-  ],
-      })
-    }
-  },[multiChart])
+  // //MULTI-CHART
+  // useEffect(()=>{
+  //   if (multiChart.data != null) {
+  //     setDataMultiChart({
+  //       labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+  //       datasets: [
+  //   {
+  //     type: 'bar',
+  //     label: 'Test Failed',
+  //     backgroundColor: FAILED,
+  //     data: multiChart.data.fail === null ? [] : multiChart.data.fail,
+  //     borderColor: 'white',
+  //     borderWidth: 2,
+  //   },
+  //   {
+  //     type: 'bar',
+  //     label: 'Test Passed',
+  //     backgroundColor: PASSED,
+  //     data: multiChart.data.pass === null ? [] : multiChart.data.pass,
+  //   },
+  //   {
+  //     type: 'bar',
+  //     label: 'Test Blocked',
+  //     backgroundColor: BLOCKED,
+  //     data: multiChart.data.block === null ? [] : multiChart.data.block,
+  //   },
+  // ],
+  //     })
+  //   }
+  // },[multiChart])
 
 
   return (
@@ -224,39 +223,43 @@ const  Dashboard = (props) => {
       <Divider my={6} />      
       <Grid container spacing={6}>
         <Grid item xs={12} lg={6}>
-          {multiChart.sucess === null ? 
+          {/* {multiChart.sucess === null ? 
             <div style={{height: 0, overflow: "hidden", paddingTop: "100%", position: "relative"}}>
               <Skeleton variant="rect" style={{position: "absolute", top: 0, left: 0, width: "100%", height: "50%"}}/>
             </div> : 
-           <MultiChart datasets={dataMultiChart}/>}
+           <MultiChart datasets={dataMultiChart}/>} */}
+           <MultiChart datasets={dataMultiChart}/>
         </Grid>
         <Grid item xs={12} lg={6}>
-        {execOverviewData.sucess === null ? 
+        {/* {execOverviewData.sucess === null ? 
           <div style={{height: 0, overflow: "hidden", paddingTop: "100%", position: "relative"}}>
             <Skeleton variant="rect" style={{position: "absolute", top: 0, left: 0, width: "100%", height: "100%"}}/>
           </div> :
-          <DoughnutChart dataset={dataExecOverview} type='dashboard' overviewData={execOverviewData.data ? execOverviewData.data.overviewdata : 0}/>}
+          <DoughnutChart dataset={dataExecOverview} type='dashboard' overviewData={execOverviewData.data ? execOverviewData.data.overviewdata : 0}/>} */}
+          <DoughnutChart dataset={dataExecOverview} type='dashboard' overviewData={26}/>
         </Grid>
       </Grid>
 
       <Grid container spacing={6}>
-        <Grid item xs={12} lg={6}>
-        {sixExecution.sucess === null ? 
+        <Grid item xs={12} lg={12}>
+        {/* {sixExecution.sucess === null ? 
           <div style={{height: 0, overflow: "hidden", paddingTop: "100%", position: "relative"}}>
             <Skeleton variant="rect" style={{position: "absolute", top: 0, left: 0, width: "100%", height: "100%"}}/>
           </div> :
-          <UnpaidTable data={sixExecution.data !== null ? sixExecution.data : []}/>} 
+          <UnpaidTable data={sixExecution.data !== null ? sixExecution.data : []}/>}  */}
+          <UnpaidTable data={[]}/> 
         </Grid>
         <Grid item xs={12} lg={6}>
-        {effortsData.sucess === null ?
+        {/* {effortsData.sucess === null ?
           <div style={{height: 0, overflow: "hidden", paddingTop: "100%", position: "relative"}}>
             <Skeleton variant="rect" style={{position: "absolute", top: 0, left: 0, width: "100%", height: "50%"}}/>
           </div> :
-          <HorizontalBarChart datasets={dataEfforts}/>}
+          <HorizontalBarChart datasets={dataEfforts}/>} */}
         </Grid>
       </Grid>
     </React.Fragment>
   )
 }
 
-export default  connect(mapStateToProps,mapDispatchToProps)(withTheme(Dashboard))
+//connect(mapStateToProps,mapDispatchToProps)
+export default  (withTheme(Dashboard))

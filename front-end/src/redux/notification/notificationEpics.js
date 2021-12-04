@@ -35,7 +35,7 @@ import {API_ADDR} from '../constants';
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
         type: actions.GET_ALL_NOTIFICATIONS_FAILED,
@@ -75,7 +75,7 @@ import {API_ADDR} from '../constants';
           const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
           type: actions.ADD_NEW_NOTIFICATION_FAILED,
@@ -110,7 +110,7 @@ import {API_ADDR} from '../constants';
             const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
             type: actions.GET_NOTIFICATION_BYID_FAILED,
@@ -148,7 +148,7 @@ import {API_ADDR} from '../constants';
             const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
             type: actions.UPDATE_NOTIFICATION_FAILED,
@@ -183,7 +183,7 @@ import {API_ADDR} from '../constants';
               const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
               type: actions.DELETE_NOTIFICATION_FAILED,

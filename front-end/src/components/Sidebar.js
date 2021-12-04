@@ -307,7 +307,7 @@ function Sidebar({ classes, staticContext, location, currentSelectedProject,curr
   }
 
   const handleClick = () => {
-    history.replace('/projects');
+    history.replace('/adm');
   }
   
   const [disableHoverTooltip, setDisableHoverTooltip] = useState(false);

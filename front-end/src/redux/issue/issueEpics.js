@@ -35,7 +35,7 @@ export  const getAllIssueEpic = (action$, state$) => action$.pipe(
       const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
       type: actions.GET_ALL_ISSUE_FAILED,
@@ -77,7 +77,7 @@ export  const getAllIssueEpic = (action$, state$) => action$.pipe(
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
         type: actions.UPDATE_ISSUE_FAILED,
@@ -119,7 +119,7 @@ export  const getAllIssueEpic = (action$, state$) => action$.pipe(
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
         type: actions.UPDATE_ISSUE_FAILED,
@@ -157,7 +157,7 @@ export  const getAllIssueEpic = (action$, state$) => action$.pipe(
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
         type: actions.DELETE_ISSUE_FAILED,
@@ -195,7 +195,7 @@ export  const getAllIssueEpic = (action$, state$) => action$.pipe(
           const {status} = error.response.data;
           if (status ===  401) {
             localStorage.clear();
-            window.location.replace('/login');
+            //window.location.replace('/login');
           } else
           return of({
           type: actions.DELETE_ISSUE_FROM_EXEC_FAILED,
@@ -233,7 +233,7 @@ export  const getAllIssueEpic = (action$, state$) => action$.pipe(
           const {status} = error?.response?.data;
             if (status ===  401) {
               localStorage.clear();
-              window.location.replace('/login');
+              //window.location.replace('/login');
             } else
             return of({
           type: actions.GET_ALL_CATEGORY_FAILED,
@@ -272,7 +272,7 @@ export  const getAllIssueEpic = (action$, state$) => action$.pipe(
             const {status} = error.response.data;
             if (status ===  401) {
               localStorage.clear();
-              window.location.replace('/login');
+              //window.location.replace('/login');
             } else
             return of({
             type: actions.ADD_ISSUE_FAILED,
@@ -311,7 +311,7 @@ export  const getInfoMantisEpic = (action$, state$) => action$.pipe(
       const {status} = error?.response?.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
       type: actions.GET_INFO_MANTIS_FAILED,
@@ -347,7 +347,7 @@ export  const getInfoMantisEpic = (action$, state$) => action$.pipe(
         const {status} = error?.response?.data;
           if (status ===  401) {
             localStorage.clear();
-            window.location.replace('/login');
+            //window.location.replace('/login');
           } else
           return of({
         type: actions.GET_ALL_MANTIS_OF_PROJECT_FAILED,
@@ -384,7 +384,7 @@ export  const getInfoMantisEpic = (action$, state$) => action$.pipe(
         const {status} = error?.response?.data;
           if (status ===  401) {
             localStorage.clear();
-            window.location.replace('/login');
+            //window.location.replace('/login');
           } else
           return of({
         type: actions.GET_ALL_CONNECTED_MANTIS_FAILED,
@@ -422,7 +422,7 @@ export  const getInfoMantisEpic = (action$, state$) => action$.pipe(
           const {status} = error.response.data;
           if (status ===  401) {
             localStorage.clear();
-            window.location.replace('/login');
+            //window.location.replace('/login');
           } else
           return of({
           type: actions.SWITCH_CONNECTED_MANTIS_FAILED,
@@ -463,7 +463,7 @@ export  const getInfoMantisEpic = (action$, state$) => action$.pipe(
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
         type: actions.CREATE_NEW_MANTIS_FAILED,
@@ -502,7 +502,7 @@ export  const getInfoMantisEpic = (action$, state$) => action$.pipe(
           const {status} = error.response.data;
           if (status ===  401) {
             localStorage.clear();
-            window.location.replace('/login');
+            //window.location.replace('/login');
           } else
           return of({
           type: actions.CREATE_AND_SWITCH_MANTIS_FAILED,
@@ -541,7 +541,7 @@ export  const getInfoMantisEpic = (action$, state$) => action$.pipe(
             const {status} = error.response.data;
             if (status ===  401) {
               localStorage.clear();
-              window.location.replace('/login');
+              //window.location.replace('/login');
             } else
             return of({
             type: actions.SWITCH_MANTIS_FAILED,
@@ -579,7 +579,7 @@ export  const getInfoMantisEpic = (action$, state$) => action$.pipe(
               const {status} = error.response.data;
               if (status ===  401) {
                 localStorage.clear();
-                window.location.replace('/login');
+                //window.location.replace('/login');
               } else
               return of({
               type: actions.CHANGE_API_KEY_FAILED,

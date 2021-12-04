@@ -35,7 +35,7 @@ import {API_ADDR} from '../constants';
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
         type: actions.GET_ALL_BUILDS_FAILED,
@@ -70,7 +70,7 @@ import {API_ADDR} from '../constants';
           const {status} = error.response.data;
           if (status ===  401) {
             localStorage.clear();
-            window.location.replace('/login');
+            //window.location.replace('/login');
           } else
           return of({
           type: actions.GET_BUILD_REPORT_FAILED,
@@ -113,7 +113,7 @@ import {API_ADDR} from '../constants';
         const {status} = error.response.data;
       if (status ===  401) {
         localStorage.clear();
-        window.location.replace('/login');
+        //window.location.replace('/login');
       } else
       return of({
         type: actions.ADD_NEW_BUILD_FAILED,
@@ -148,7 +148,7 @@ import {API_ADDR} from '../constants';
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
         type: actions.GET_BUILD_BYID_FAILED,
@@ -191,7 +191,7 @@ import {API_ADDR} from '../constants';
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
         type: actions.UPDATE_BUILD_FAILED,
@@ -226,7 +226,7 @@ import {API_ADDR} from '../constants';
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
         type: actions.DELETE_BUILD_FAILED,
@@ -261,7 +261,7 @@ import {API_ADDR} from '../constants';
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
         type: actions.GET_ALL_BUILD_ACTIVE_FAILED,
@@ -297,7 +297,7 @@ import {API_ADDR} from '../constants';
           const {status} = error.response.data;
           if (status ===  401) {
             localStorage.clear();
-            window.location.replace('/login');
+            //window.location.replace('/login');
           } else
           return of({
           type: actions.GET_ALL_BUILD_ACTIVE_FAILED,

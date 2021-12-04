@@ -35,7 +35,7 @@ export  const getAllTestexecEpic = (action$, state$) => action$.pipe(
       const {status} = error?.response?.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
       type: actions.GET_ALL_TESTEXEC_FAILED,
@@ -74,7 +74,7 @@ export  const addNewTestexecEpic = (action$, state$) => action$.pipe(
       const {status} = error.response.data;
       if (status ===  401) {
         localStorage.clear();
-        window.location.replace('/login');
+        //window.location.replace('/login');
       } else
       return of({
       type: actions.ADD_TESTEXEC_FAILED,
@@ -113,7 +113,7 @@ export  const execTestcaseEpic = (action$, state$) => action$.pipe(
       const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
       type: actions.EXECUTE_TEST_CASE_FAILED,
@@ -152,7 +152,7 @@ export  const execTestcaseEpic = (action$, state$) => action$.pipe(
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
         type: actions.UPDATE_TEST_EXEC_FAILED,
@@ -190,7 +190,7 @@ export  const execTestcaseEpic = (action$, state$) => action$.pipe(
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
         type: actions.DELETE_TEST_EXEC_FAILED,
@@ -229,7 +229,7 @@ export  const execTestcaseEpic = (action$, state$) => action$.pipe(
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
         type: actions.UPDATE_TEST_EXEC_DETAIL_FAILED,

@@ -35,7 +35,7 @@ export  const getAllTestcaseEpic = (action$, state$) => action$.pipe(
       const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
       type: actions.GET_ALL_TESTCASE_FAILED,
@@ -71,7 +71,7 @@ export  const getAllTestsuiteEpic = (action$, state$) => action$.pipe(
       const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
       type: actions.GET_ALL_TESTSUITE_FAILED,
@@ -108,7 +108,7 @@ export  const getAllTestsuiteEpic = (action$, state$) => action$.pipe(
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
         type: actions.ADD_TEST_SUITE_FAILED,
@@ -144,7 +144,7 @@ export  const getAllTestsuiteEpic = (action$, state$) => action$.pipe(
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
         type: actions.ADD_TEST_CASE_FAILED,
@@ -179,7 +179,7 @@ export  const getAllTestsuiteEpic = (action$, state$) => action$.pipe(
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
         type: actions.GET_ALL_TESTSUITE_NO_TREE_FAILED,
@@ -223,7 +223,7 @@ export  const getAllTestsuiteEpic = (action$, state$) => action$.pipe(
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
         type: actions.UPDATE_TESTCASE_FAILED,
@@ -258,7 +258,7 @@ export  const getAllTestsuiteEpic = (action$, state$) => action$.pipe(
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
         type: actions.DELETE_TESTCASE_FAILED,
@@ -295,7 +295,7 @@ export  const getAllTestsuiteEpic = (action$, state$) => action$.pipe(
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
         type: actions.GET_LIST_TESTCASE_SELECT_FAILED,
@@ -335,7 +335,7 @@ export  const getAllTestsuiteEpic = (action$, state$) => action$.pipe(
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
         type: actions.UPDATE_TESTSUITE_FAILED,
@@ -370,7 +370,7 @@ export  const getAllTestsuiteEpic = (action$, state$) => action$.pipe(
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
         type: actions.DELETE_TESTSUITE_FAILED,
@@ -410,7 +410,7 @@ export  const getAllTestsuiteEpic = (action$, state$) => action$.pipe(
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
         type: actions.SEARCH_TESTCASE_FAILED,
@@ -447,7 +447,7 @@ export  const getAllTestsuiteEpic = (action$, state$) => action$.pipe(
         const {status} = error.response.data;
         if (status ===  401) {
           localStorage.clear();
-          window.location.replace('/login');
+          //window.location.replace('/login');
         } else
         return of({
         type: actions.UPLOAD_TESTCASE_FAILED,

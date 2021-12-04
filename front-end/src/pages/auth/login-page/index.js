@@ -19,9 +19,6 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { blue } from '@material-ui/core/colors';
 import LockIcon from '@material-ui/icons/Lock';
 
-//IMPORT REGISTER
-import RegisterPage from '../register-page/index';
-
 
 //MAP STATES TO PROPS - REDUX
 const  mapStateToProps = (state) => {
@@ -86,17 +83,19 @@ const LoginPage = (props) => {
       }
     },[account]);
 
+    // useEffect(()=>{
+    //   if (localStorage.getItem("token") && project === ''){
+    //     history.push("/projects");
+    //   } else  if (localStorage.getItem("token"))  {
+    //     history.push("/projects/"+project);
+    //   }
+    // }, [accountInfo, history])
+
     useEffect(()=>{
-      if (localStorage.getItem("token") && project === ''){
-        history.push("/projects");
-      } else  if (localStorage.getItem("token"))  {
-        history.push("/projects/"+project);
-      }
-    }, [accountInfo, history])
+      history.push("/adm/monitor");
+    }, [])
 
 
-    //OPEN REGISTER POPUP STATE
-    const [isOpenRegister, openRegister] = useState(false);
 
     //CHANGE CHECKBOX
     const handleChange = (prop) => (event) => {
@@ -114,10 +113,11 @@ const LoginPage = (props) => {
       setValues({ ...values, showPassword: !values.showPassword });
     };
 
+
+
     const handleMouseDownPassword = (event) => {
       event.preventDefault();
     };
-
 
     //HANDLE LOGIN REQUEST BUTTON
     const handleClickLogin = (event) => {
@@ -141,7 +141,6 @@ const LoginPage = (props) => {
     return(
     <div className={classes.root}>
     <MessagePopup open={openMsg} openMethod={setOpenMsg} type="E" content="Invalid Messaged"/>
-    <RegisterPage isOpen = {isOpenRegister} setOpenState = {openRegister}/>
         <Grid container>
         <Grid item xs={7} style={{backgroundColor: 'white', height: '100vh'}}>
           <img className={classes.banner} src = "/img/logo-banner.jpg" alt= "banner"/>
@@ -202,6 +201,9 @@ const LoginPage = (props) => {
             {loading && <CircularProgress size={24} style={{color: blue[500],position: 'absolute',top: '50%',left: '50%',marginTop: -12,marginLeft: -12,}} />}
           </Button>          
         </div>
+        <span>
+          <a href="auth/forgot-password">Forgot your password?</a>
+        </span>
           </form>
         </Grid>
       </Grid>

@@ -61,7 +61,7 @@ const UserMenu = (props) => {
     };
 
     const handleProfileClick = () => {
-      history.push("/profile");
+      history.push("/adm/profile");
     }
 
     const handleLogOut = () => {

@@ -87,7 +87,7 @@ const PieChart = (props) => {
   const tableTitle = () => {
     switch(type) {
       case 'dashboard':
-        return "Test Execution Overview";
+        return "Auction Item Overview";
 
       case 'testexec':
         return "Test Execution Overview";
@@ -161,27 +161,21 @@ const PieChart = (props) => {
           <TableBody>
             <TableRow>
               <TableCell component="th" scope="row">
-                Pass
+                Sold
               </TableCell>
               <TableCell align="right">{dataset ? dataset.datasets[0].data[0] : 0}</TableCell>
             </TableRow>
             <TableRow>
               <TableCell component="th" scope="row">
-                Fail
+                Not Sold
               </TableCell>
               <TableCell align="right">{dataset ? dataset.datasets[0].data[1] : 0}</TableCell>
             </TableRow>
             <TableRow>
               <TableCell component="th" scope="row">
-                Blocked
+                In Auction
               </TableCell>
               <TableCell align="right">{dataset ? dataset.datasets[0].data[2] : 0}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell component="th" scope="row">
-                Not Executed
-              </TableCell>
-              <TableCell align="right">{dataset ? dataset.datasets[0].data[3] : 0}</TableCell>
             </TableRow>
           </TableBody>
         </Table>

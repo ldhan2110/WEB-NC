@@ -64,7 +64,7 @@ const UnpaidTable = (props) => {
           {/* <Chip label="This month" rgbcolor={blue[500]} /> */}
         </Box>
       }
-      title="Latest Test Execution"
+      title="User Request"
     />
 
     <Paper>
@@ -72,11 +72,10 @@ const UnpaidTable = (props) => {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Test Execution Name</TableCell>
-              <TableCell align="left">Tester</TableCell>
+              <TableCell>Username</TableCell>
+              <TableCell align="left">Email</TableCell>
               <TableCell align="left">Status</TableCell>
-              <TableCell align="left">Created Date</TableCell>
-              <TableCell align="left">Updated Date</TableCell>
+              <TableCell align="left">Request Date</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -93,7 +92,6 @@ const UnpaidTable = (props) => {
                   row.status === 'Untest' ? Untest:''
                 } /></TableCell>
                 <TableCell align="left">{row.created_date}</TableCell>
-                <TableCell align="left">{row.updated_date}</TableCell>
               </TableRow>
             ))}
           </TableBody>

@@ -21,7 +21,7 @@ const Header = (props) => {
         <React.Fragment>
             {!isLogin ? 
                 <div className={classes.header}>
-                    <img src ="/img/Logo1zz.png" alt= 'logo'/>
+                    <img src ="/img/logo.png" alt= 'logo' className={classes.img}/>
                 </div>
                 :
                 <LoginHeader onDrawerToggle={onDrawerToggle}/>
