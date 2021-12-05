@@ -31,6 +31,12 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 //   <RouterNavLink innerRef={ref} {...props} />
 // ));
 
+
+const sampleUser = [
+  {id: "0123456", name: "Zhou Yu", email: "zhouyu@gmail.com", role: "Admin", status: 0},
+  {id: "0123456", name: "Zhou Yu", email: "zhouyu@gmail.com", role: "Admin", status: 1}
+];
+
 function mapStateToProps(state) {
   return {
     user: state.user,
@@ -118,37 +124,8 @@ const MemberListPage = (props) => {
 
   }
 
-  useEffect(()=>{
-    user.success = "";
-    getAllUserOfProjectReq(project);
-  },[]);
 
-  useEffect(()=>{
-    if(user.success === true)
-      handleArray();
-  },[user.success])
 
-  useEffect(()=>{
-    if(user.success === true)
-      setListMember(array);
-    setOpenRoleDialog(false);
-  },[array])
-
-  useEffect(()=>{
-    if (searchConditions.username === '' && searchConditions.role === -1){
-      setListMember(array);
-    } 
-    else{
-      if(searchConditions.role === -1)
-      setListMember(array.filter((item) => {
-        if(item.name.toLowerCase().includes(searchConditions.username.toLowerCase()))
-          return array;}))
-      else
-      setListMember(array.filter((item) => {
-        if(item.name.toLowerCase().includes(searchConditions.username.toLowerCase()) && searchConditions.role === item.role)
-          return array;}))
-    }
-  },[searchConditions]);
 
   //delete member -->
   
@@ -237,7 +214,7 @@ const MemberListPage = (props) => {
 
       <Grid container spacing={6}>
         <Grid item xs={12}>
-           {/* Load bar */}
+           {/* Load bar
            {user.success === true ? 
            <EnhancedTable
             rows={listMember}
@@ -249,18 +226,18 @@ const MemberListPage = (props) => {
             handleDefaultDeleteAction={deleteMember}
             type='member'
             load={user.success}
-          />:
+          />: */}
           <EnhancedTable
-          rows={[]}
+          rows={sampleUser}
           headerList = {MEMBERS_HEADERS}
           //conditions={MEMBER_SEARCH}
           type='member'
-          load={user.success}
-        />}
+          load={true}
+        />
         </Grid>
       </Grid>
     </div>
   );
 }
-
-export default connect(mapStateToProps,mapDispatchToProps)(withStyles(styles)(MemberListPage));
+// connect(mapStateToProps,mapDispatchToProps)
+export default (withStyles(styles)(MemberListPage));

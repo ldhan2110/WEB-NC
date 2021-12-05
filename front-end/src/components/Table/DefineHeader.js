@@ -51,7 +51,9 @@ export const MEMBERS_HEADERS = {
   headerCells: [
     { id: 'id', alignment: 'left', label: 'ID', type: 'text', hidden: true },
     { id: 'name', alignment: 'left', label: 'Name',type: 'text' },
-    { id: 'role', alignment: 'left', label: 'Roles',type: 'text' },
+    { id: 'email', alignment: 'left', label: 'Email',type: 'text' },
+    { id: 'role', alignment: 'left', label: 'Roles',type: 'label' },
+    { id: 'status', alignment: 'left', label: 'Status',type: 'label' },
   ]
 }
 

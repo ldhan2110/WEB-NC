@@ -89,8 +89,8 @@ const SettingProjectPage = (props) => {
   const [loadingg, setLoadingg] = useState(false);
 
   useEffect(()=>{
-    projectsettings.byIDsuccess = null;
-    getProjectByIdReq(project);
+    // projectsettings.byIDsuccess = null;
+    // getProjectByIdReq(project);
   },[]);
 
   useEffect(()=>{
@@ -346,4 +346,5 @@ const SettingProjectPage = (props) => {
   );
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(withStyles(styles)(SettingProjectPage));
+// connect(mapStateToProps,mapDispatchToProps)
+export default (withStyles(styles)(SettingProjectPage));

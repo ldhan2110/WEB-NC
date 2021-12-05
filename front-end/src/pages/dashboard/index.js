@@ -18,25 +18,33 @@ import HorizontalBarChart from '../../components/Charts/HorizontalChart';
 import { GET_EFFORT_REQ, GET_EXEC_OVERVIEW_REQ, GET_MULTI_CHART_REQ, GET_SIX_EXECUTION_REQ } from '../../redux/dashboard/constants';
 import Skeleton from '@material-ui/lab/Skeleton';
 
-//MAP STATES TO PROPS - REDUX
-function mapStateToProps(state) {
-  return {
-    effortsData: state.dashboard.efforts,
-    execOverviewData: state.dashboard.execOverview,
-    multiChart: state.dashboard.multiChart,
-    sixExecution: state.dashboard.sixExecution
-  };
-}
 
-//MAP DISPATCH ACTIONS TO PROPS - REDUX
-const mapDispatchToProps = dispatch => {
-  return {
-    getEffortReq: () => dispatch({ type: GET_EFFORT_REQ }),
-    getExecOverviewReq: ()=>dispatch({type: GET_EXEC_OVERVIEW_REQ}),
-    getMultiChartReq: () => dispatch({type: GET_MULTI_CHART_REQ}),
-    getSixExecutionReq: () => dispatch({type: GET_SIX_EXECUTION_REQ})
-  }
-}
+const sampleUserRequest = [
+  {username: "Sample1", email: "sample@gmail.com", status: "Request", request_date: "05/12/2021"},
+  {username: "Sample1", email: "sample@gmail.com", status: "Approve", request_date: "05/12/2021"},
+  {username: "Sample1", email: "sample@gmail.com", status: "Reject", request_date: "05/12/2021"},
+]
+
+
+// //MAP STATES TO PROPS - REDUX
+// function mapStateToProps(state) {
+//   return {
+//     effortsData: state.dashboard.efforts,
+//     execOverviewData: state.dashboard.execOverview,
+//     multiChart: state.dashboard.multiChart,
+//     sixExecution: state.dashboard.sixExecution
+//   };
+// }
+
+// //MAP DISPATCH ACTIONS TO PROPS - REDUX
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     getEffortReq: () => dispatch({ type: GET_EFFORT_REQ }),
+//     getExecOverviewReq: ()=>dispatch({type: GET_EXEC_OVERVIEW_REQ}),
+//     getMultiChartReq: () => dispatch({type: GET_MULTI_CHART_REQ}),
+//     getSixExecutionReq: () => dispatch({type: GET_SIX_EXECUTION_REQ})
+//   }
+// }
 
 
 
@@ -97,7 +105,7 @@ const  Dashboard = (props) => {
     datasets: [
     {
       type: 'bar',
-      label: 'Not Sold',
+      label: 'Bidder',
       backgroundColor: FAILED,
       data: [0,1,2,3,4,5,6,7,8,9,10,11],
       borderColor: 'white',
@@ -105,14 +113,8 @@ const  Dashboard = (props) => {
     },
     {
       type: 'bar',
-      label: 'Sold',
+      label: 'Seller',
       backgroundColor: PASSED,
-      data: [0,1,2,3,4,5,6,7,8,9,10,11],
-    },
-    {
-      type: 'bar',
-      label: 'In Auction',
-      backgroundColor: BLOCKED,
       data: [0,1,2,3,4,5,6,7,8,9,10,11],
     },
   ],
@@ -247,7 +249,7 @@ const  Dashboard = (props) => {
             <Skeleton variant="rect" style={{position: "absolute", top: 0, left: 0, width: "100%", height: "100%"}}/>
           </div> :
           <UnpaidTable data={sixExecution.data !== null ? sixExecution.data : []}/>}  */}
-          <UnpaidTable data={[]}/> 
+          <UnpaidTable data={sampleUserRequest}/> 
         </Grid>
         <Grid item xs={12} lg={6}>
         {/* {effortsData.sucess === null ?

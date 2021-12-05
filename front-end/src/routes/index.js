@@ -23,8 +23,11 @@ const Dashboard = async(() => import("../pages/dashboard"));
 const ProjectList = async(()=>import('../pages/projects/project-list-page/index'));
 
 //Item Management components
-const ItemListPage = async(()=>import('../pages/testplans/test-plans-list-page/index'));
+const ItemListPage = async(()=>import('../pages/category/category-list-page/index'));
 
+
+//Category Management components
+const CategoryListPage = async(()=>import('../pages/category/category-list-page/index'));
 
 
 //User Monitor components
@@ -50,13 +53,13 @@ const userManagementRoutes = {
   children: [
     {
       id: "User Monitor",
-      path: "/projects/:projectName/settings",
+      path: "/adm/user/monitor",
       name: "User Monitor",
-      component: SettingProjectPage
+      component: MemberListPage
     },
     {
       id: "User Request",
-      path: "/projects/:projectName/members",
+      path: "/adm/user/user-request",
       name: "User Request",
       icon: <Users/>,
       component: MemberListPage
@@ -136,7 +139,7 @@ const categoryManangementRoute = {
   icon: <AssignmentOutlinedIcon/>,
   restrict: true,
   exact: true,
-  component: ItemListPage
+  component: CategoryListPage
 }
 
 // Routes using the Dashboard layout
@@ -144,7 +147,7 @@ export const primaryLayoutRoutes = [
   dashboardRoute,
   itemManagementRoute,
   categoryManangementRoute,
-  categoryManangementRoute,
+  userManagementRoutes,
 ];
 
 // Routes using the Auth layout

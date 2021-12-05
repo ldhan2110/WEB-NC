@@ -82,16 +82,16 @@ const UnpaidTable = (props) => {
             {listdata.map((row) => (
               <TableRow key={row.id}>
                 <TableCell component="th" scope="row">
-                  {row.testexecutionname}
+                  {row.username}
                 </TableCell>
-                <TableCell align="left">{row.tester.username}</TableCell>
+                <TableCell align="left">{row.email}</TableCell>
                 <TableCell align="left"><Chip label={row.status} rgbcolor={
-                  row.status === 'Pass' ? PASSED:'' ||
-                  row.status === 'Fail' ? FAILED:'' ||
-                  row.status === 'Block' ? BLOCKED:'' ||
-                  row.status === 'Untest' ? Untest:''
+                  row.status === 'Approve' ? PASSED:'' ||
+                  row.status === 'Reject' ? FAILED:'' ||
+                  row.status === 'Request' ? BLOCKED:'' ||
+                  row.status === '' ? Untest : ''
                 } /></TableCell>
-                <TableCell align="left">{row.created_date}</TableCell>
+                <TableCell align="left">{row.request_date}</TableCell>
               </TableRow>
             ))}
           </TableBody>
