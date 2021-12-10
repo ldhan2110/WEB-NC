@@ -307,7 +307,7 @@ function Sidebar({ classes, staticContext, location, currentSelectedProject,curr
   }
 
   const handleClick = () => {
-    history.replace('/adm');
+    history.replace('/adm/monitor');
   }
   
   const [disableHoverTooltip, setDisableHoverTooltip] = useState(false);
@@ -335,7 +335,7 @@ function Sidebar({ classes, staticContext, location, currentSelectedProject,curr
               {currentSelectedProjectName}
             </Box>
           </Tooltip>
-          - {currentRole} -
+           <Chip size="small" mr={1} mb={1} label="Admin"  />
         </div>
       </Brand>
       <Scrollbar>

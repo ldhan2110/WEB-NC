@@ -129,8 +129,8 @@ const UserMenu = (props) => {
     }
 
     useEffect(()=>{
-      notification.success = "";
-      getAllNotificationReq();
+      // notification.success = "";
+      // getAllNotificationReq();
     },[]);
     
     useEffect(()=>{

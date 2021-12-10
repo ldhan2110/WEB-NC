@@ -19,12 +19,9 @@ const VerifyMemberPage =  async(()=>import("../pages/auth/verify-member-page"));
 // Dashboards components
 const Dashboard = async(() => import("../pages/dashboard"));
 
-//Projects components
-const ProjectList = async(()=>import('../pages/projects/project-list-page/index'));
-
 //Item Management components
-const ItemListPage = async(()=>import('../pages/category/category-list-page/index'));
-
+const ItemListPage = async(()=>import('../pages/items/item-list-page/index'));
+const ItemDetailPage = async(()=> import('../pages/items/item-detail-page/index'))
 
 //Category Management components
 const CategoryListPage = async(()=>import('../pages/category/category-list-page/index'));
@@ -32,10 +29,9 @@ const CategoryListPage = async(()=>import('../pages/category/category-list-page/
 
 //User Monitor components
 const MemberListPage = async(()=>import('../pages/settings/members/index'));
-const SettingProjectPage = async(()=>import('../pages/settings/setting-project/index'));
 
 
-
+//DASHBOARD ROUTE
 const dashboardRoute = {
   id: "Dashboard",
   path: "/adm/monitor",
@@ -45,6 +41,8 @@ const dashboardRoute = {
   component: Dashboard
 };
 
+
+//USER MANAGEMENT ROUTE
 const userManagementRoutes = {
   id: "Users Management",
   path: "/projects/:projectName",
@@ -67,6 +65,8 @@ const userManagementRoutes = {
   ]
 };
 
+
+//AUTHENTICATE ROUTE
 const verifyMemberRoute = {
   path: "/auth/verify-member/:email/:projectid/:token",
   name: "Verify Member",
@@ -106,19 +106,10 @@ const profileRoute = {
   component: ProfilePage
 };
 
-//PROJECT
-const projectListRoute = {
-  path: "/projects",
-  name: "Projects",
-  restrict: true,
-  exact: true,
-  component: ProjectList
-}
-
-//ISSUE
 
 
-//TEST PLAN
+
+//ITEM MANAGEMENT
 const itemManagementRoute = {
   id: "Items Management",
   path: "/adm/auction-items",
@@ -129,9 +120,16 @@ const itemManagementRoute = {
   component: ItemListPage
 }
 
+const itemDetailRoute = {
+  path: "/adm/auction-items/:id",
+  name: "Item Detail",
+  restrict: true,
+  component: ItemDetailPage
+}
 
 
-//REQUIREMENT
+
+//CATEGORY MANAGEMENT
 const categoryManangementRoute = {
   id: "Category Management",
   path: "/adm/category-manage",
@@ -146,6 +144,7 @@ const categoryManangementRoute = {
 export const primaryLayoutRoutes = [
   dashboardRoute,
   itemManagementRoute,
+  itemDetailRoute,
   categoryManangementRoute,
   userManagementRoutes,
 ];
@@ -154,7 +153,6 @@ export const primaryLayoutRoutes = [
 export const freeLayoutRoutes = [
   forgotPasswordRoute,
   resetPasswordRoute,
-  projectListRoute,
   profileRoute,
   verifyMemberRoute
 ];

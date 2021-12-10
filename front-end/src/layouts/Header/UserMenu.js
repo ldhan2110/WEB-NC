@@ -22,18 +22,18 @@ const IconButton = styled(MuiIconButton)`
   }
 `;
 
-const  mapStateToProps = (state) => {
-  return {
-    inforProfile: state.user.inforProfile
-  }
-}
+// const  mapStateToProps = (state) => {
+//   return {
+//     inforProfile: state.user.inforProfile
+//   }
+// }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getCurrentProfileReq: (payload) => dispatch({ type: GET_CURRENT_USER_REQ, payload}),
-    logoutReq: () => dispatch({ type: LOGOUT_REQ }),
-  }
-};
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     getCurrentProfileReq: (payload) => dispatch({ type: GET_CURRENT_USER_REQ, payload}),
+//     logoutReq: () => dispatch({ type: LOGOUT_REQ }),
+//   }
+// };
 
 const UserMenu = (props) => {
     const history = useHistory();
@@ -45,12 +45,12 @@ const UserMenu = (props) => {
     const [avatarId, setAvatarId] = useState("");
 
     useEffect(()=>{
-      getCurrentProfileReq();
+      // getCurrentProfileReq();
     },[])
 
-    useEffect(()=>{
-      setAvatarId(inforProfile.avatar);
-    },[inforProfile])
+    // useEffect(()=>{
+    //   setAvatarId(inforProfile.avatar);
+    // },[inforProfile])
 
     const toggleMenu = event => {
       setAnchorMenu(event.currentTarget);
@@ -110,4 +110,5 @@ const UserMenu = (props) => {
     );
   }
 
-  export default connect(mapStateToProps,mapDispatchToProps)(UserMenu);
+  // connect(mapStateToProps,mapDispatchToProps)
+  export default (UserMenu);

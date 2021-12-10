@@ -17,23 +17,23 @@ import {
   Button
 } from '@material-ui/core';
 
-//MAP STATES TO PROPS - REDUX
-const  mapStateToProps = (state) => {
-  return { insTestplan: state.testplan.insTestplan, 
-           project:state.project.currentSelectedProject,
-           listBuilds: state.build.listBuilds }
-}
+// //MAP STATES TO PROPS - REDUX
+// const  mapStateToProps = (state) => {
+//   return { insTestplan: state.testplan.insTestplan, 
+//            project:state.project.currentSelectedProject,
+//            listBuilds: state.build.listBuilds }
+// }
 
-//MAP DISPATCH ACTIONS TO PROPS - REDUX
-const mapDispatchToProps = dispatch => {
-  return {
-    addNewTestplanReq: (payload) => dispatch({ type: ADD_NEW_TESTPLAN_REQ, payload }),
-    getAllTestplanReq: (payload) => dispatch({ type: GET_ALL_TESTPLAN_REQ, payload}),
-    displayMsg: (payload) => dispatch({type: DISPLAY_MESSAGE, payload }),
-    getAllBuildActiveReq: (payload) => dispatch({ type: GET_ALL_BUILD_ACTIVE_REQ, payload }),
-    resetAddRedux: () => dispatch({type: RESET_ADD_NEW_TESTPLAN}) 
-  }
-}
+// //MAP DISPATCH ACTIONS TO PROPS - REDUX
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     addNewTestplanReq: (payload) => dispatch({ type: ADD_NEW_TESTPLAN_REQ, payload }),
+//     getAllTestplanReq: (payload) => dispatch({ type: GET_ALL_TESTPLAN_REQ, payload}),
+//     displayMsg: (payload) => dispatch({type: DISPLAY_MESSAGE, payload }),
+//     getAllBuildActiveReq: (payload) => dispatch({ type: GET_ALL_BUILD_ACTIVE_REQ, payload }),
+//     resetAddRedux: () => dispatch({type: RESET_ADD_NEW_TESTPLAN}) 
+//   }
+// }
 
 
 const NewCategoryPopup = (props) => {
