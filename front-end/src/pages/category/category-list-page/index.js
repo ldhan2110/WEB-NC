@@ -7,6 +7,7 @@ import { useHistory } from "react-router-dom";
 import Helmet from 'react-helmet';
 import NewCategoryPopup from '../new-category-popup/index';
 import { connect } from 'react-redux';
+import { green, orange, red, blue } from "@material-ui/core/colors";
 import {
   Grid,
   Typography,
@@ -110,8 +111,8 @@ const CategoryManagementPage = (props) => {
             <IconButton aria-label="update" onClick={handleOpenUpdate}>
               <Edit />
             </IconButton>
-            <IconButton aria-label="delete">
-              <DeleteIcon />
+            <IconButton aria-label="delete" >
+              <DeleteIcon  style={{color: red[500]}}/>
             </IconButton>
           </div>
           {/* Delete TP dialog */}

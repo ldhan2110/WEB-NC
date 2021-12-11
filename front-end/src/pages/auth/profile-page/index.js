@@ -297,7 +297,7 @@ const handleClickShowPasswordd = () => {
           <Typography component="h1" variant="h1" gutterBottom className = {classes.title}>
                 Profile
           </Typography>
-          {user.getCurrentUserSuccess === "" && <CircularProgress size={35} style={{marginTop:'-15px', marginLeft: 15}}/>}
+          {/* {user.getCurrentUserSuccess === "" && <CircularProgress size={35} style={{marginTop:'-15px', marginLeft: 15}}/>} */}
           </div>
           <Divider my={6}/>
           <Grid container justify="space-between" className={classes.content} spacing={5}>

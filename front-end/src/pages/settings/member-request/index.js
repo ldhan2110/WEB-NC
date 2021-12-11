@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { useHistory } from "react-router-dom";
 import EnhancedTable from '../../../components/Table/index';
 import Helmet from 'react-helmet';
-import {ITEMS_HEADERS} from '../../../components/Table/DefineHeader';
+import {MEMBERS_REQUEST_HEADERS} from '../../../components/Table/DefineHeader';
 import {MEMBER_SEARCH} from '../../../components/Table/DefineSearch';
 // import {ADD_USERS_TO_PROJECT_REQ, GET_ALL_USERS_REQ, GET_ALL_USERS_OF_PROJECT_REQ, DELETE_USER_OF_PROJECT_REQ, RESET_DELETE_USER_OF_PROJECT} from '../../../redux/users/constants';
 import {DISPLAY_MESSAGE} from '../../../redux/message/constants';
@@ -30,9 +30,10 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 // ));
 
 
-const sampleItems = [
-  {id: "0123456", item_name: "Devils Amulet", item_owner: "Zhou Yu", status: 0, create_date: "12/10/20201"},
-  {id: "0123456", item_name: "Conqueror Sword", item_owner: "Zhou Yu", status: 0, create_date: "12/10/20201"},
+const sampleUserRequest = [
+  {id: "0123456", name: "Liu Bei", status: 0, req_date: "12/10/20201"},
+  {id: "0123456", name: "Liu Bei", status: 0, req_date: "12/10/20201"},
+  {id: "0123456", name: "Liu Bei", status: 0, req_date: "12/10/20201"},
 ];
 
 // function mapStateToProps(state) {
@@ -74,7 +75,7 @@ const ItemListPage = (props) => {
           <Grid container>
             <Grid item xs={6}>
               <Typography variant="h3" gutterBottom display="inline">
-              Auction Item Management
+              Member Request
               </Typography>
             </Grid>
           </Grid>
@@ -123,8 +124,8 @@ const ItemListPage = (props) => {
             load={user.success}
           />: */}
           <EnhancedTable
-          rows={sampleItems}
-          headerList = {ITEMS_HEADERS}
+          rows={sampleUserRequest}
+          headerList = {MEMBERS_REQUEST_HEADERS}
           //conditions={MEMBER_SEARCH}
           load={true}
         />

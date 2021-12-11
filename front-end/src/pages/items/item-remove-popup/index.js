@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import styles from "./styles";
 import { withStyles } from '@material-ui/core/styles';
-import Helmet from 'react-helmet';
 import { useHistory } from "react-router-dom";
 import {ADD_NEW_TESTPLAN_REQ, GET_ALL_TESTPLAN_REQ, RESET_ADD_NEW_TESTPLAN} from '../../../redux/test-plan/constants';
 import {DISPLAY_MESSAGE} from '../../../redux/message/constants';
@@ -14,7 +13,8 @@ import {
   DialogContentText ,
   DialogTitle ,
   TextField,
-  Button
+  Divider,
+  Button,
 } from '@material-ui/core';
 
 // //MAP STATES TO PROPS - REDUX
@@ -36,7 +36,7 @@ import {
 // }
 
 
-const NewCategoryPopup = (props) => {
+const RemoveItemPopup = (props) => {
 
   const {isOpen, setOpenPopup, type} = props;
 
@@ -52,35 +52,34 @@ const NewCategoryPopup = (props) => {
 
     
     return (
-      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-      <DialogTitle id="form-dialog-title">{type == "Insert" ? "Add New Category" : "Update Category"}</DialogTitle>
+      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" 
+      fullWidth={true}
+      maxWidth='sm'>
+      <DialogTitle id="form-dialog-title">Remove Auction Item</DialogTitle>
+      <Divider/>
       <DialogContent>
+        <DialogContentText>
+            Please fill in reason why this item is removed. This will be sent to the customer
+        </DialogContentText>
         <TextField
           autoFocus
           margin="dense"
           id="name"
-          label="Category Name"
+          label="Reason"
           type="text"
           variant="outlined"
+          multiline
+          rows={4}
+          maxRows={4}
           fullWidth
-        />
-         <TextField
-          autoFocus
-          margin="dense"
-          id="name"
-          label="Category Parent"
-          type="text"
-          variant="outlined"
-          fullWidth
-          disabled
         />
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose} color="primary">
-          Cancel
+          SUBMIT
         </Button>
-        <Button onClick={handleClose} color="primary">
-          Save
+        <Button onClick={handleClose} color="red">
+          CANCEL
         </Button>
       </DialogActions>
     </Dialog>
@@ -88,5 +87,5 @@ const NewCategoryPopup = (props) => {
   }
   
   // connect(mapStateToProps,mapDispatchToProps)
-  export default (withStyles(styles)(NewCategoryPopup));
+  export default (withStyles(styles)(RemoveItemPopup));
   

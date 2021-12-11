@@ -24,6 +24,17 @@ export const MEMBERS_HEADERS = {
   ]
 }
 
+export const MEMBERS_REQUEST_HEADERS = {
+  hasActions: true,
+  hasCheckbox: false,
+  headerCells: [
+    { id: 'id', alignment: 'left', label: 'ID', type: 'text', hidden: true },
+    { id: 'name', alignment: 'left', label: 'Name',type: 'text' },
+    { id: 'status', alignment: 'left', label: 'Status',type: 'label' },
+    { id: 'req_date', alignment: 'left', label: 'Request Date',type: 'text' },
+  ]
+}
+
 
 
 

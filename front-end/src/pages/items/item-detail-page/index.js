@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import Helmet from 'react-helmet';
 import Carousel from '../../../components/Carousel';
+import RemoveItemPopup from '../item-remove-popup/index.js';
 import { withStyles } from '@material-ui/core/styles';
 import styles from "./styles";
 import {
@@ -8,6 +9,7 @@ import {
     Typography,
     Divider,
     Paper,
+    Button,
     Chip
   } from '@material-ui/core';
 
@@ -18,6 +20,12 @@ const imgData = [
 ];
 
 const ItemListPage = (props) => {
+    const [openPopup, setOpenPopup] = useState(false);
+
+    const handleOpenRemovePopup = () => {
+      setOpenPopup(true);
+    }
+
     // <-- delete member 
     const {classes} = props;
     return(
@@ -30,11 +38,11 @@ const ItemListPage = (props) => {
           <Grid item>
             <Typography variant="h3" gutterBottom display="inline">
               Item Detail - Devil Amulet
-            </Typography>
-  
+            </Typography>         
           </Grid>
           <Grid item>
-           
+          <Button variant="contained" color="secondary" onClick={handleOpenRemovePopup}>Remove Item</Button>
+          <RemoveItemPopup isOpen={openPopup} setOpenPopup={setOpenPopup}/>
           </Grid>
         </Grid>
   

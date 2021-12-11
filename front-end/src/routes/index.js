@@ -29,7 +29,7 @@ const CategoryListPage = async(()=>import('../pages/category/category-list-page/
 
 //User Monitor components
 const MemberListPage = async(()=>import('../pages/settings/members/index'));
-
+const MemberRequestPage = async(()=>import('../pages/settings/member-request/index'));
 
 //DASHBOARD ROUTE
 const dashboardRoute = {
@@ -60,7 +60,7 @@ const userManagementRoutes = {
       path: "/adm/user/user-request",
       name: "User Request",
       icon: <Users/>,
-      component: MemberListPage
+      component: MemberRequestPage
     },
   ]
 };
