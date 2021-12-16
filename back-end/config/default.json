@@ -1,9 +1,9 @@
 {
     "server": {
         "HOST": "localhost",
-        "PORT": 8000
+        "PORT":8000
     },
-    "dbConfig": {
-        "URI": "mongodb+srv://ldhan2110:hoangan123@auctiondb.c5z8v.mongodb.net/auction-db?retryWrites=true&w=majority"
+    "dbConfig":{
+        "URI": "mongodb+srv://ldhan2110:hoangan123@auctiondb.c5z8v.mongodb.net/test?authSource=admin&replicaSet=atlas-t79u0f-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true"
     }
 }
