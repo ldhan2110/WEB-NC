@@ -6,7 +6,8 @@ import asyncError from 'express-async-errors';
 import config from 'config';
 import mongoose from 'mongoose';
 
-import userModel from './Models/Auth/UserModel.js';
+import itemRouter from './routes/item_routes.js';
+import adminRouter from './routes/admin_routes.js';
 
 //CONFIG SERVER
 var app = express();
@@ -15,33 +16,8 @@ app.use(express.json());
 app.use(morgan('dev'));
 app.use(cors());
 
-
-
-app.get('/', async function (req, res) {
-    try {
-        res.send(await userModel.findAll());
-    } catch (err) {
-        res.send(err);
-    }
-});
-
-app.get('/adm/search', async function (req, res) {
-  try {
-      const usrId = req.query.id;
-      res.send(await userModel.findById(usrId));
-  } catch (err) {
-      res.send(err);
-  }
-});
-
-app.post('/adm/insert', async function (req, res) {
-  try {
-      const usrInfo = req.body;
-      res.send(await userModel.addNewUsr(usrInfo));
-  } catch (err) {
-      res.send(err);
-  }
-});
+app.use('/api/item/', itemRouter);
+app.use('/api/admin/', adminRouter);
 
 
 app.get('/err', function (req, res) {
