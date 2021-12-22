@@ -1,12 +1,9 @@
 import React from "react";
 import Carousel from 'react-material-ui-carousel'
+import CloudinaryImg from './CloudinaryImg';
 
 const contentStyle = {
-    height: '30vh',
-    color: '#fff',
-    lineHeight: '160px',
-    textAlign: 'center',
-    background: '#364d79',
+   marginTop: "10px"
 };
 
 const CarouselComponent = (props) => {
@@ -21,8 +18,8 @@ const CarouselComponent = (props) => {
     return (<Carousel>
         {
             listImg.map( (item, i) => 
-            <div>
-                <h3 style={contentStyle}>1</h3>
+            <div className={contentStyle}>
+                <CloudinaryImg/> 
             </div>)
         }
     </Carousel>);

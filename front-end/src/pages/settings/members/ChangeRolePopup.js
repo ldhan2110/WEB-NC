@@ -3,7 +3,7 @@ import {DISPLAY_MESSAGE} from '../../../redux/message/constants';
 import { connect } from 'react-redux';
 import styles from "./styles";
 import { withStyles } from '@material-ui/core/styles';
-import {CHANGE_ROLE_MEMBER_REQ, RESET_CHANGE_ROLE_MEMBER} from '../../../redux/projects/constants';
+// import {CHANGE_ROLE_MEMBER_REQ, RESET_CHANGE_ROLE_MEMBER} from '../../../redux/projects/constants';
 import {GET_ALL_USERS_OF_PROJECT_REQ} from '../../../redux/users/constants';
 import { useHistory } from "react-router";
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -21,23 +21,23 @@ import {
 } from '@material-ui/core'
 
 
-function mapStateToProps(state) {
-  return {
-    insProjects: state.project.insProjects,
-    project: state.project.currentSelectedProject,
-    role: state.project.currentRole,
-  };
-}
+// function mapStateToProps(state) {
+//   return {
+//     insProjects: state.project.insProjects,
+//     project: state.project.currentSelectedProject,
+//     role: state.project.currentRole,
+//   };
+// }
 
-//MAP DISPATCH ACTIONS TO PROPS - REDUX
-const mapDispatchToProps = dispatch => {
-  return {
-    changeRoleMember: (payload) => dispatch({ type: CHANGE_ROLE_MEMBER_REQ, payload }),
-    displayMsg: (payload) => dispatch({type: DISPLAY_MESSAGE, payload }),
-    ResetRedux: (payload) => dispatch({ type: RESET_CHANGE_ROLE_MEMBER, payload }),
-    getAllUserOfProjectReq: (payload) => dispatch({ type: GET_ALL_USERS_OF_PROJECT_REQ, payload}),
-  }
-}
+// //MAP DISPATCH ACTIONS TO PROPS - REDUX
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     changeRoleMember: (payload) => dispatch({ type: CHANGE_ROLE_MEMBER_REQ, payload }),
+//     displayMsg: (payload) => dispatch({type: DISPLAY_MESSAGE, payload }),
+//     ResetRedux: (payload) => dispatch({ type: RESET_CHANGE_ROLE_MEMBER, payload }),
+//     getAllUserOfProjectReq: (payload) => dispatch({ type: GET_ALL_USERS_OF_PROJECT_REQ, payload}),
+//   }
+//}
 
 const ChangRolePopup = (props) => {
 
@@ -55,32 +55,32 @@ const ChangRolePopup = (props) => {
     setOpen(isOpen);
   },[isOpen])
 
-  useEffect(()=>{
-    setUserInfo(selected);
-  },[selected])
+  // useEffect(()=>{
+  //   setUserInfo(selected);
+  // },[selected])
 
 
-  useEffect(()=>{
-    if (insProjects.sucess === false){
-      displayMsg({
-        content: insProjects.errMsg,
-        type: 'error'
-      });
-      setEnableCreateBtn(true);
-      setLoading(false);
-      ResetRedux(); 
-    } else if (insProjects.sucess === true) {
-      displayMsg({
-        content: "Change role member successfully !",
-        type: 'success'
-      });
-      setEnableCreateBtn(true);
-      setLoading(false);
-      ResetRedux();
-      getAllUserOfProjectReq(project);
-      setOpen(false);
-    }
-  },[insProjects.sucess]);
+  // useEffect(()=>{
+  //   if (insProjects.sucess === false){
+  //     displayMsg({
+  //       content: insProjects.errMsg,
+  //       type: 'error'
+  //     });
+  //     setEnableCreateBtn(true);
+  //     setLoading(false);
+  //     ResetRedux(); 
+  //   } else if (insProjects.sucess === true) {
+  //     displayMsg({
+  //       content: "Change role member successfully !",
+  //       type: 'success'
+  //     });
+  //     setEnableCreateBtn(true);
+  //     setLoading(false);
+  //     ResetRedux();
+  //     getAllUserOfProjectReq(project);
+  //     setOpen(false);
+  //   }
+  // },[insProjects.sucess]);
 
   const handleClose = () => {
     setOpen(false);
@@ -153,4 +153,5 @@ const ChangRolePopup = (props) => {
     );
 };
 
-export default connect(mapStateToProps,mapDispatchToProps)(withStyles(styles)(ChangRolePopup));
+// connect(mapStateToProps,mapDispatchToProps)
+export default (withStyles(styles)(ChangRolePopup));

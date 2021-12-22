@@ -2,14 +2,14 @@ import { combineReducers } from 'redux';
 
 import themeReducer from '../theme/themeReducers';
 import accountReducer from '../account/accountReducers';
-import projectReducers from '../projects/projectReducers';
+import itemReducers from '../items/itemReducers';
 import testplanReducers from '../test-plan/testplanReducers';
 import issueReducers from '../issue/issueReducers';
 import requirementsReducers from '../requirements/requirementsReducers';
 import messageReducers from '../message/messageReducers';
 import testcaseReducers from '../test-case/testcaseReducers';
 import buildReducers from '../build-release/buildReducers';
-import milestoneReducers from '../milestones/milestoneReducers';
+
 import userReducers from '../users/userReducers';
 import testexecReducers from '../test-execution/testexecReducers';
 import dashboardReducers from '../dashboard/dashboardReducers';
@@ -24,9 +24,9 @@ const projectConfig = {
 
 const appReducer = combineReducers({
 	themeReducer,
+	item: itemReducers,
 	dashboard: dashboardReducers,
 	account: accountReducer,
-  	project: persistReducer(projectConfig,projectReducers),
   	testplan: testplanReducers,
 	issue: issueReducers,
 	requirements: requirementsReducers,
@@ -34,7 +34,6 @@ const appReducer = combineReducers({
 	testcase: testcaseReducers,
 	testexec:testexecReducers,
 	build: buildReducers,
-	milestone: milestoneReducers,
 	user: userReducers,
 	notification: notificationReducers,
 });

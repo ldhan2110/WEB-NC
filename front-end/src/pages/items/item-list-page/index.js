@@ -6,7 +6,7 @@ import EnhancedTable from '../../../components/Table/index';
 import Helmet from 'react-helmet';
 import {ITEMS_HEADERS} from '../../../components/Table/DefineHeader';
 import {MEMBER_SEARCH} from '../../../components/Table/DefineSearch';
-// import {ADD_USERS_TO_PROJECT_REQ, GET_ALL_USERS_REQ, GET_ALL_USERS_OF_PROJECT_REQ, DELETE_USER_OF_PROJECT_REQ, RESET_DELETE_USER_OF_PROJECT} from '../../../redux/users/constants';
+import {GET_ALL_ITEMS_REQ, RESET_ALL_ITEM_REDUX} from '../../../redux/items/constants';
 import {DISPLAY_MESSAGE} from '../../../redux/message/constants';
 import { connect } from 'react-redux';
 import {
@@ -25,9 +25,7 @@ import {
 } from "@material-ui/icons";
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import LinearProgress from '@material-ui/core/LinearProgress';
-// const NavLink = React.forwardRef((props, ref) => (
-//   <RouterNavLink innerRef={ref} {...props} />
-// ));
+
 
 
 const sampleItems = [
@@ -35,32 +33,37 @@ const sampleItems = [
   {id: "0123456", item_name: "Conqueror Sword", item_owner: "Zhou Yu", status: 0, create_date: "12/10/20201"},
 ];
 
-// function mapStateToProps(state) {
-//   return {
-//     user: state.user,
-//     listUsers: state.user.listUsers,
-//     listUsersOfProject: state.user.listUsersOfProject,
-//     project: state.project.currentSelectedProject,
-//     insDeleteMember: state.user.insDeleteMember,
-//     role: state.project.currentRole,
-//   };
-// }
+function mapStateToProps(state) {
+  return {
+    listItem: state.item.listItems,
+    success: state.item.success
+  };
+}
 
-// //MAP DISPATCH ACTIONS TO PROPS - REDUX
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     addUserToProjectReq: (payload) => dispatch({ type: ADD_USERS_TO_PROJECT_REQ, payload }),
-//     getAllUserReq: (payload) => dispatch({ type: GET_ALL_USERS_REQ, payload}),
-//     getAllUserOfProjectReq: (payload) => dispatch({ type: GET_ALL_USERS_OF_PROJECT_REQ, payload}),
-//     displayMsg: (payload) => dispatch({type: DISPLAY_MESSAGE, payload }),
-//     deleteUserOfProject: (payload) => dispatch({ type: DELETE_USER_OF_PROJECT_REQ, payload }),
-//     resetDelUserOfProjectRedux: () => dispatch({ type: RESET_DELETE_USER_OF_PROJECT})
-//   }
-// }
+//MAP DISPATCH ACTIONS TO PROPS - REDUX
+const mapDispatchToProps = dispatch => {
+  return {
+    getAllItemsReq: (payload) => dispatch({ type: GET_ALL_ITEMS_REQ, payload}),
+    resetRedux: ()=>dispatch({type:RESET_ALL_ITEM_REDUX})
+  }
+}
 
 
 const ItemListPage = (props) => {
- 
+  const {success, listItem, getAllItemsReq, resetRedux} = props;
+
+  const history = useHistory();
+
+  useEffect(()=>{
+    resetRedux();
+    getAllItemsReq();
+  },[]);
+
+
+  const handleDeleteItem = () => {
+
+  }
+
 
   // <-- delete member 
   return(
@@ -109,29 +112,27 @@ const ItemListPage = (props) => {
 
       <Grid container spacing={6}>
         <Grid item xs={12}>
-           {/* Load bar
-           {user.success === true ? 
+           {success === true ? 
            <EnhancedTable
-            rows={listMember}
-            headerList = {MEMBERS_HEADERS}
-            viewAction={handleOpenChangeRole}
-            conditions={MEMBER_SEARCH}
-            setConditions={handleChangeConditions}
-            searchMethod={searchMember}
-            handleDefaultDeleteAction={deleteMember}
-            type='member'
-            load={user.success}
-          />: */}
+            rows={listItem}
+            headerList = {ITEMS_HEADERS}
+            // conditions={MEMBER_SEARCH}
+            // setConditions={handleChangeConditions}
+            // searchMethod={searchMember}
+            handleDefaultDeleteAction={handleDeleteItem}
+            type="items"
+            load={success}
+          />:
           <EnhancedTable
           rows={sampleItems}
           headerList = {ITEMS_HEADERS}
           //conditions={MEMBER_SEARCH}
-          load={true}
-        />
+          load={success}
+        />}
         </Grid>
       </Grid>
     </div>
   );
 }
-// connect(mapStateToProps,mapDispatchToProps)
-export default (withStyles(styles)(ItemListPage));
+
+export default connect(mapStateToProps,mapDispatchToProps)(withStyles(styles)(ItemListPage));

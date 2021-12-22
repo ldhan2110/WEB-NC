@@ -7,8 +7,8 @@ import ChangeRolePopup from './ChangeRolePopup';
 import Helmet from 'react-helmet';
 import {MEMBERS_HEADERS} from '../../../components/Table/DefineHeader';
 import {MEMBER_SEARCH} from '../../../components/Table/DefineSearch';
-import NewMemberDialog from './InviteNewMember';
-import {ADD_USERS_TO_PROJECT_REQ, GET_ALL_USERS_REQ, GET_ALL_USERS_OF_PROJECT_REQ, DELETE_USER_OF_PROJECT_REQ, RESET_DELETE_USER_OF_PROJECT} from '../../../redux/users/constants';
+
+// import {ADD_USERS_TO_PROJECT_REQ, GET_ALL_USERS_REQ, GET_ALL_USERS_OF_PROJECT_REQ, DELETE_USER_OF_PROJECT_REQ, RESET_DELETE_USER_OF_PROJECT} from '../../../redux/users/constants';
 import {DISPLAY_MESSAGE} from '../../../redux/message/constants';
 import { connect } from 'react-redux';
 import {
@@ -37,28 +37,28 @@ const sampleUser = [
   {id: "0123456", name: "Zhou Yu", email: "zhouyu@gmail.com", role: "Admin", status: 1}
 ];
 
-function mapStateToProps(state) {
-  return {
-    user: state.user,
-    listUsers: state.user.listUsers,
-    listUsersOfProject: state.user.listUsersOfProject,
-    project: state.project.currentSelectedProject,
-    insDeleteMember: state.user.insDeleteMember,
-    role: state.project.currentRole,
-  };
-}
+// function mapStateToProps(state) {
+//   return {
+//     user: state.user,
+//     listUsers: state.user.listUsers,
+//     listUsersOfProject: state.user.listUsersOfProject,
+//     project: state.project.currentSelectedProject,
+//     insDeleteMember: state.user.insDeleteMember,
+//     role: state.project.currentRole,
+//   };
+// }
 
-//MAP DISPATCH ACTIONS TO PROPS - REDUX
-const mapDispatchToProps = dispatch => {
-  return {
-    addUserToProjectReq: (payload) => dispatch({ type: ADD_USERS_TO_PROJECT_REQ, payload }),
-    getAllUserReq: (payload) => dispatch({ type: GET_ALL_USERS_REQ, payload}),
-    getAllUserOfProjectReq: (payload) => dispatch({ type: GET_ALL_USERS_OF_PROJECT_REQ, payload}),
-    displayMsg: (payload) => dispatch({type: DISPLAY_MESSAGE, payload }),
-    deleteUserOfProject: (payload) => dispatch({ type: DELETE_USER_OF_PROJECT_REQ, payload }),
-    resetDelUserOfProjectRedux: () => dispatch({ type: RESET_DELETE_USER_OF_PROJECT})
-  }
-}
+// //MAP DISPATCH ACTIONS TO PROPS - REDUX
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     addUserToProjectReq: (payload) => dispatch({ type: ADD_USERS_TO_PROJECT_REQ, payload }),
+//     getAllUserReq: (payload) => dispatch({ type: GET_ALL_USERS_REQ, payload}),
+//     getAllUserOfProjectReq: (payload) => dispatch({ type: GET_ALL_USERS_OF_PROJECT_REQ, payload}),
+//     displayMsg: (payload) => dispatch({type: DISPLAY_MESSAGE, payload }),
+//     deleteUserOfProject: (payload) => dispatch({ type: DELETE_USER_OF_PROJECT_REQ, payload }),
+//     resetDelUserOfProjectRedux: () => dispatch({ type: RESET_DELETE_USER_OF_PROJECT})
+//   }
+// }
 
 
 const MemberListPage = (props) => {
@@ -168,7 +168,6 @@ const MemberListPage = (props) => {
       <ChangeRolePopup/>
       <Helmet title="Members Management" />
       <ChangeRolePopup isOpen={openRoleDialog} openMethod={setOpenRoleDialog} selected={selected}/>
-      <NewMemberDialog isOpen={openDialog} openMethod={setOpenDialog}/>
       <Grid
         justify="space-between"
         container 

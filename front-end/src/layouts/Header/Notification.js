@@ -18,7 +18,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { SELECT_PROJECT } from '../../redux/projects/constants';
+// import { SELECT_PROJECT } from '../../redux/projects/constants';
 import { GET_ALL_TESTEXEC_REQ } from '../../redux/test-execution/constants';
 
 
@@ -38,26 +38,25 @@ const Indicator = styled(Badge)`
 
 
 //MAP STATES TO PROPS - REDUX
-const  mapStateToProps = (state) => {
-  return {
-    listNotifications: state.notification.listNotifications,  
-    insNotifications: state.notification.insNotifications,
-    notification: state.notification,
-    project: state.project.listProjects
-  }
-}
+// const  mapStateToProps = (state) => {
+//   return {
+//     listNotifications: state.notification.listNotifications,  
+//     insNotifications: state.notification.insNotifications,
+//     notification: state.notification,
+//     project: state.project.listProjects
+//   }
+// }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    logoutReq: () => dispatch({ type: LOGOUT_REQ }),
-    addNotificationReq: (payload) => dispatch({ type: ADD_NEW_NOTIFICATION_REQ, payload }),
-    getAllNotificationReq: () => dispatch({ type: GET_ALL_NOTIFICATIONS_REQ}),
-    updateNotificationReq: (payload) => dispatch({ type: UPDATE_NOTIFICATION_REQ, payload}),
-    resetUpdateNotification: () => dispatch({ type: RESET_UPDATE_NOTIFICATION}),
-    selectProject: (value) => dispatch({type: SELECT_PROJECT, value}),
-    getAllTestExecReq: () => dispatch({ type: GET_ALL_TESTEXEC_REQ}),
-  }
-};
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     logoutReq: () => dispatch({ type: LOGOUT_REQ }),
+//     addNotificationReq: (payload) => dispatch({ type: ADD_NEW_NOTIFICATION_REQ, payload }),
+//     getAllNotificationReq: () => dispatch({ type: GET_ALL_NOTIFICATIONS_REQ}),
+//     updateNotificationReq: (payload) => dispatch({ type: UPDATE_NOTIFICATION_REQ, payload}),
+//     resetUpdateNotification: () => dispatch({ type: RESET_UPDATE_NOTIFICATION}),
+//     getAllTestExecReq: () => dispatch({ type: GET_ALL_TESTEXEC_REQ}),
+//   }
+// };
 
 const UserMenu = (props) => {
     const history = useHistory();
@@ -128,36 +127,36 @@ const UserMenu = (props) => {
         return arr_url[arr_url.length-3];
     }
 
-    useEffect(()=>{
-      // notification.success = "";
-      // getAllNotificationReq();
-    },[]);
+    // useEffect(()=>{
+    //   // notification.success = "";
+    //   // getAllNotificationReq();
+    // },[]);
     
-    useEffect(()=>{
-      if(notification.success === true){
-        setListNotif(listNotifications);
-        setItems(listNotifications.slice(0, firstPage));
-        setLastObjectPosition(currentValue => currentValue + perPage);
-        setHasNextPage((lastObjectPosition < listNotifications.length) ? true:false);
-      }
-    },[notification]);
+    // useEffect(()=>{
+    //   if(notification.success === true){
+    //     setListNotif(listNotifications);
+    //     setItems(listNotifications.slice(0, firstPage));
+    //     setLastObjectPosition(currentValue => currentValue + perPage);
+    //     setHasNextPage((lastObjectPosition < listNotifications.length) ? true:false);
+    //   }
+    // },[notification]);
 
-    useEffect(()=>{
-      let listTemp = listNotifications.filter(item => item.is_read === false);
-      setNumUnread(listTemp.length);
-    },[notification.success]);
+    // useEffect(()=>{
+    //   let listTemp = listNotifications.filter(item => item.is_read === false);
+    //   setNumUnread(listTemp.length);
+    // },[notification.success]);
 
-    useEffect(()=>{
-      if(anchorEl !== null) {
-        if(load < 1){
-          setLoad(load + 1);          
-        }
-        if(load >= 1){
-          notification.success = "";
-          getAllNotificationReq();
-        }
-      }
-    },[anchorEl]);
+    // useEffect(()=>{
+    //   if(anchorEl !== null) {
+    //     if(load < 1){
+    //       setLoad(load + 1);          
+    //     }
+    //     if(load >= 1){
+    //       notification.success = "";
+    //       getAllNotificationReq();
+    //     }
+    //   }
+    // },[anchorEl]);
 
   function time2TimeAgo(ts) {
     // This function computes the delta between the
@@ -203,11 +202,11 @@ const UserMenu = (props) => {
     
     
 
-    useEffect(()=>{
-      if(insNotifications?.sucess === true) {
-        resetUpdateNotification();
-      }
-    },[insNotifications])
+    // useEffect(()=>{
+    //   if(insNotifications?.sucess === true) {
+    //     resetUpdateNotification();
+    //   }
+    // },[insNotifications])
 
     const handleClickNotif = async (id, isRead, url) => {
       if(isRead === false) {
@@ -262,9 +261,9 @@ const UserMenu = (props) => {
             style: {overflow: "hidden", height:'620px', width:'400px',border: '1px solid #d3d4d5', backgroundColor:'rgba(255,255,255,0.97)'
             }
           }}>
-            {<div style={notification.success === "" ? {height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}
+            {/* {<div style={notification.success === "" ? {height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}
             :{display:'none'}}>
-              <CircularProgress style={{width: '28px', height: '28px', color:'#909090'}} /></div> }
+              <CircularProgress style={{width: '28px', height: '28px', color:'#909090'}} /></div> } */}
         <Paper>
           <ListSubheader style={{fontSize:16}}>{"Notifications"}</ListSubheader>
         </Paper>
@@ -347,4 +346,5 @@ const UserMenu = (props) => {
     );
   }
 
-  export default connect(mapStateToProps,mapDispatchToProps)(withStyles(styles)(UserMenu));
+  // connect(mapStateToProps,mapDispatchToProps)
+  export default (withStyles(styles)(UserMenu));

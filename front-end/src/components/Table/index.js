@@ -204,16 +204,12 @@ const EnhancedTable = (props) => {
                                   </TableCell>)
 
                             case 'label':
-                              if(type === 'requirements')
+                              if(type === 'items')
                               return (<TableCell align={headerList.headerCells[index].alignment} key={index}>
-                                        {row[headerList.headerCells[index].id] == 1 && headerList.headerCells[index].label !== 'Status' && <Chip size="small" mr={1} mb={1} label="Active" is_active={1}/>}
-                                        {row[headerList.headerCells[index].id] == 0 && headerList.headerCells[index].label !== 'Status' && <Chip size="small" mr={1} mb={1} label="Inactive" />}
-                                        {row[headerList.headerCells[index].id] == 1 && headerList.headerCells[index].label === 'Status' && <Chip size="small" mr={1} mb={1} label="Complete" is_active={1}/>}
-                                        {row[headerList.headerCells[index].id] == 0 && headerList.headerCells[index].label === 'Status' && <Chip size="small" mr={1} mb={1} label="Incomplete" />}
-                                        {row[headerList.headerCells[index].id] == 2 || row[headerList.headerCells[index].id] === "Pass" && <Chip size="small" mr={1} mb={1} label="Pass" pass={1}/>}
-                                        {row[headerList.headerCells[index].id] == 3 || row[headerList.headerCells[index].id] === "Fail" && <Chip size="small" mr={1} mb={1} label="Fail" fail={1}/>}
-                                        {row[headerList.headerCells[index].id] == 4 || row[headerList.headerCells[index].id] === "Block" && <Chip size="small" mr={1} mb={1} label="Block" block={1}/>}
-                                        {row[headerList.headerCells[index].id] == 'Untest' && <Chip size="small" mr={1} mb={1} label="Untest" />}
+                                        {row[headerList.headerCells[index].id] === "Finish" && <Chip size="small" mr={1} mb={1} label="Finish" pass={1}/>}
+                                        {row[headerList.headerCells[index].id] === "Removed" && <Chip size="small" mr={1} mb={1} label="Removed" fail={1}/>}
+                                        {row[headerList.headerCells[index].id] === "In Auction" && <Chip size="small" mr={1} mb={1} label="In Auction" block={1}/>}
+                                        {row[headerList.headerCells[index].id] == 'New' && <Chip size="small" mr={1} mb={1} label="New" />}
                                   </TableCell>)
                               else
                               return (<TableCell align={headerList.headerCells[index].alignment} key={index}>

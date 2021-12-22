@@ -395,4 +395,5 @@ function Sidebar({ classes, staticContext, location, currentSelectedProject,curr
   );
 }
 
-export default connect(mapStateToProps)(withRouter(Sidebar));
+//connect(mapStateToProps)
+export default (withRouter(Sidebar));

@@ -8,7 +8,7 @@ const router=express.Router();
 router.get("/getAll",async function(req,res){
     try {
         const listItem=await itemModel.findAll();
-        res.send(listItem);
+        res.send({success: true, data: listItem});
     } catch (error) {
         res.send(error);
     }
@@ -19,9 +19,9 @@ router.get("/:item_id",async function(req,res){
         const item_id = req.params.item_id;
         const ret=await itemModel.findById(item_id);
         if (ret)
-            res.send(ret);
+            res.send({success: true, data: ret});
         else
-            res.send("Nothing found!");
+            res.send({success: true, data: ""});
     } catch (error) {
         res.send(error);
     }

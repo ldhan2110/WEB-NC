@@ -2,10 +2,9 @@ import React, {useEffect, useState} from 'react';
 import styles from "./styles";
 import { withStyles } from '@material-ui/core/styles';
 import { useHistory } from "react-router-dom";
-import {ADD_NEW_TESTPLAN_REQ, GET_ALL_TESTPLAN_REQ, RESET_ADD_NEW_TESTPLAN} from '../../../redux/test-plan/constants';
+import {DELETE_ITEM_REQ, RESET_DELETE_ITEM_REDUX} from '../../../redux/items/constants';
 import {DISPLAY_MESSAGE} from '../../../redux/message/constants';
 import { connect } from 'react-redux';
-import {GET_ALL_BUILD_ACTIVE_REQ } from '../../../redux/build-release/constants';
 import {
   Dialog,
   DialogActions,
@@ -17,39 +16,42 @@ import {
   Button,
 } from '@material-ui/core';
 
-// //MAP STATES TO PROPS - REDUX
-// const  mapStateToProps = (state) => {
-//   return { insTestplan: state.testplan.insTestplan, 
-//            project:state.project.currentSelectedProject,
-//            listBuilds: state.build.listBuilds }
-// }
+//MAP STATES TO PROPS - REDUX
+const  mapStateToProps = (state) => {
+  return { 
+      success: state.item.delSuccess
+  }
+}
 
-// //MAP DISPATCH ACTIONS TO PROPS - REDUX
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     addNewTestplanReq: (payload) => dispatch({ type: ADD_NEW_TESTPLAN_REQ, payload }),
-//     getAllTestplanReq: (payload) => dispatch({ type: GET_ALL_TESTPLAN_REQ, payload}),
-//     displayMsg: (payload) => dispatch({type: DISPLAY_MESSAGE, payload }),
-//     getAllBuildActiveReq: (payload) => dispatch({ type: GET_ALL_BUILD_ACTIVE_REQ, payload }),
-//     resetAddRedux: () => dispatch({type: RESET_ADD_NEW_TESTPLAN}) 
-//   }
-// }
+//MAP DISPATCH ACTIONS TO PROPS - REDUX
+const mapDispatchToProps = dispatch => {
+  return {
+    deleteItemReq: (payload) => dispatch({ type: DELETE_ITEM_REQ, payload }),
+    resetRedux: () => dispatch({type: RESET_DELETE_ITEM_REDUX}) 
+  }
+}
 
 
 const RemoveItemPopup = (props) => {
+  const {success, deleteItemReq, resetRedux} = props;
 
-  const {isOpen, setOpenPopup, type} = props;
+  const {isOpen, setOpenPopup, type, id} = props;
 
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(isOpen);
+
+  const history = useHistory();
 
   const handleClose = () => {
     setOpenPopup(false);
   };
 
+  const handleRemove = () => {
+    deleteItemReq(id);
+  }
+
   useEffect(()=>{
     setOpen(isOpen);
   },[isOpen])
-
     
     return (
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" 
@@ -75,7 +77,7 @@ const RemoveItemPopup = (props) => {
         />
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose} color="primary">
+        <Button onClick={handleRemove} color="primary">
           SUBMIT
         </Button>
         <Button onClick={handleClose} color="red">
@@ -86,6 +88,6 @@ const RemoveItemPopup = (props) => {
     );
   }
   
-  // connect(mapStateToProps,mapDispatchToProps)
-  export default (withStyles(styles)(RemoveItemPopup));
+
+  export default connect(mapStateToProps,mapDispatchToProps)(withStyles(styles)(RemoveItemPopup));
   
