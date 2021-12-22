@@ -144,4 +144,136 @@ router.delete("/delete",async function (req,res){
 
 });
 
+router.get("/categories",async function (req,res){
+    const ret=await categoryModel.findAll();
+    if (ret==null)
+        res.send("OH snap!");
+    else
+        res.send(ret);
+});
+
+
+router.post("/category/add",async function(req,res){
+    const body=req.body;
+    const ret=await categoryModel.addNewCategory(body);
+    if (ret==null)
+        res.send("OOPS! Can't add new category");
+    else
+        res.send("New category has been added");
+});
+
+router.post("/category/subcategory/add",async function (req,res){
+    const category=req.body.category;
+    const subcategory=req.body.subcategory;
+    const ret=await categoryModel.addNewSubCategory(category,subcategory);
+    if (ret==null)
+        res.send("OOPS! Can't add new subcategory");
+    else
+        res.send("New subcategory has been added");
+});
+
+router.patch("/category/update",async function (req,res){
+    const oldcategory=req.body.oldcategory;
+    const newcategory=req.body.newcategory;
+    const ret=await categoryModel.updateCategory(oldcategory,newcategory);
+    if (ret==null)
+        res.send("OOPS! Can't modify category");
+    else
+        res.send("Category has been modified");
+});
+
+router.patch("/category/subcategory/update",async function (req,res){
+    const category=req.body.category;
+    const oldSubcategory=req.body.oldsubcategory;
+    const newSubcategory=req.body.newsubcategory;
+    const ret=await categoryModel.updateSubcategory(category,oldSubcategory,newSubcategory);
+    if (ret==null)
+        res.send("OOPS! Can't modify subcategory");
+    else
+        res.send("Subcategory has been modified");
+});
+
+router.delete("/category/delete",async function (req,res){
+    const category=req.body.category;
+    const ret1=await categoryModel.findCategory(category);
+    if (ret1==null)
+        res.send("Not found");
+    else{
+        const subcategories=ret1.subcategories;
+        if (subcategories.length===0) {
+            const ret2=await categoryModel.deleteCategory(category);
+            if (ret2==null)
+                res.send("Failed to delete category");
+            else
+                res.send("Deleted successfully");
+        }
+        else {
+            let ok=true;
+            for (let sub of subcategories) {
+                console.log(sub);
+                if (sub.product_ids.length>0)
+                    ok=false
+                if (!ok) break;
+            }
+            if (!ok)
+                res.send("At least one product of this category exists, unable to delete it");
+            else{
+                const ret3=await categoryModel.deleteCategory(category);
+                if (ret3==null)
+                    res.send("Failed to delete category");
+                else
+                    res.send("Deleted successfully");
+            }
+                    
+        }
+    }
+});
+
+router.delete("/category/subcategory/delete",async function (req,res){
+    const category=req.body.category;
+    const subcategory=req.body.subcategory;
+    const ret1=await categoryModel.findCategory(category);
+    if (ret1==null)
+        res.send("Not found");
+    else{
+        let ok=true;
+        for (let sub of ret1.subcategories) {
+            if (sub.name===subcategory)
+                if (sub.product_ids.length>0)
+                    ok=false;
+            if (!ok) break;
+        }
+        
+        if (!ok)
+            res.send("At least one product of this subcategory exists, unable to delete it");
+        else {
+            const ret2=await categoryModel.deleteSubcategory(category,subcategory);
+            if (ret2==null)
+                res.send("Failed to delete subcategories");
+            else
+                res.send("Deleted successfully");
+        }
+    }
+
+});
+
+
+router.delete("/product/delete/",async function(req,res){
+    const id=req.query.id;
+    const category=req.query.category;
+    const subcategory=req.query.subcategory;
+
+    const ret1=categoryModel.deleteIteminCategory(category,subcategory,id);
+    if (ret1==null)
+        res.send("Failed to remove item from category");
+    else {
+        const ret2=itemModel.deleteItem(id);
+        if (ret2==null)
+            res.send("Failed to delete item");
+        else
+            res.send("Deleted item successfully");
+    }
+    
+    
+});
 export default router;

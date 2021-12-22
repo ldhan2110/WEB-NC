@@ -17,10 +17,12 @@ app.use(cors());
 import authRouter from "./routes/auth_routes.js";
 import adminRouter from "./routes/admin_routes.js";
 import bidderRouter from "./routes/bidder_routes.js";
+import sellerRouter from "./routes/seller_route.js";
 
 app.use("/",authRouter);
 app.use("/admin",adminRouter);
 app.use("/bidder",bidderRouter);
+app.use("/seller",sellerRouter);
 
 app.get("/err",function (req,res) {
     throw new Error("Error!");
