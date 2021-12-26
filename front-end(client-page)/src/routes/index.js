@@ -16,12 +16,13 @@ const ResetPassword = async(()=> import("../pages/auth/reset-password-page"));
 const ProfilePage = async(()=>import("../pages/auth/profile-page"));
 const VerifyMemberPage =  async(()=>import("../pages/auth/verify-member-page"));
 
+
 // Dashboards components
 const Dashboard = async(() => import("../pages/dashboard"));
 
 //Item Management components
-const ItemListPage = async(()=>import('../pages/items/item-list-page/index'));
-const ItemDetailPage = async(()=> import('../pages/items/item-detail-page/index'))
+const ItemListPage = async(()=>import('../pages/projects/item_list_page/index'));
+const ItemDetailPage = async(()=> import('../pages/items/item-detail-page/index'));
 
 //Category Management components
 const CategoryListPage = async(()=>import('../pages/category/category-list-page/index'));
@@ -112,8 +113,7 @@ const profileRoute = {
 //ITEM MANAGEMENT
 const itemManagementRoute = {
   id: "Items Management",
-  path: "/adm/auction-items",
-  icon: <Trello/>,
+  path: "/auction-items",
   name: "Items Management",
   restrict: true,
   exact:true,
@@ -121,7 +121,7 @@ const itemManagementRoute = {
 }
 
 const itemDetailRoute = {
-  path: "/adm/auction-items/:id",
+  path: "/auction-items/:id",
   name: "Item Detail",
   restrict: true,
   component: ItemDetailPage
@@ -143,8 +143,6 @@ const categoryManangementRoute = {
 // Routes using the Dashboard layout
 export const primaryLayoutRoutes = [
   dashboardRoute,
-  itemManagementRoute,
-  itemDetailRoute,
   categoryManangementRoute,
   userManagementRoutes,
 ];
@@ -154,14 +152,15 @@ export const freeLayoutRoutes = [
   forgotPasswordRoute,
   resetPasswordRoute,
   profileRoute,
-  verifyMemberRoute
+  verifyMemberRoute,
+  itemManagementRoute,
+  ItemDetailPage
 ];
 
 // Routes visible in the sidebar
 export const sidebarRoutes = [
   dashboardRoute,
   categoryManangementRoute,
-  itemManagementRoute,
   userManagementRoutes,
 ];
 

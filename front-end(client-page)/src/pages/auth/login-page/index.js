@@ -92,7 +92,7 @@ const LoginPage = (props) => {
     // }, [accountInfo, history])
 
     useEffect(()=>{
-      history.push("/adm/monitor");
+      history.push("/auction-items");
     }, [])
 
 
