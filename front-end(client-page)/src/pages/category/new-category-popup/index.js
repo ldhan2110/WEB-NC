@@ -40,19 +40,81 @@ import {
 const NewCategoryPopup = (props) => {
 
   const {isOpen, setOpenPopup, type} = props;
+  //const {insCategory, addCategory, displayMsg, getAllCategories, resetAddRedux} = props;
 
   const [open, setOpen] = React.useState(false);
+
+  const [values,setValues]= React.useState({
+    name: "",
+    parent: ""
+  });
+
+  const [categories,setCategories]=React.useState([]);
+
+  const [error,setError]=React.useState({
+    name:"ss",
+    parent:"ss"
+  });
+
+  const [checkError,setCheckError]=React.useState(false);
+
+  const handleChange = (prop) => (event) => {
+    
+    setValues({ ...values, [prop]: event.target.value });
+
+    if(checkError === true)
+    setError({ ...error, [prop]: event.target.value });
+  };
 
   const handleClose = () => {
     setOpenPopup(false);
   };
 
+  const handleAdd = function() {
+    console.log(values);
+    setCheckError(true);
+    if (values.name==="")
+      setError({...values, name:""});
+
+    if (values.name!==""){
+      if (values.parent!=="") {
+        const found=categories.find(name => name===values.parent);
+        if (found!==undefined){
+          setError({});
+          addCategory(values);
+          setOpenPopup(false);
+        } else {
+          displayMsg({
+            content: "Category Parent does not exist!",
+            type: 'error'
+          });
+        }
+      } else {
+        values.parent=null;
+        setError({});
+        addCategory(values);
+        setOpenPopup(false);
+      }
+    }
+
+  };
+
+  function addCategory(data){
+    axios.post("http://localhost:8000/admin/category/add",data)
+    .then(function (res){
+      console.log(res);
+    })
+    .catch(function (err){
+      console.log(err);
+    });
+  }
+
   useEffect(()=>{
     setOpen(isOpen);
 
-    axios.post("https://localhost:8000/admin/category/add",{})
+    axios.get("http://localhost:8000/admin/categories")
     .then(function (res){
-
+      setCategories(res.data);
     })
     .catch(function(err){
       console.log(err);
@@ -72,24 +134,29 @@ const NewCategoryPopup = (props) => {
           label="Category Name"
           type="text"
           variant="outlined"
+          value={values.name}
+          onChange={handleChange("name")}
           fullWidth
+          
         />
          <TextField
-          autoFocus
+          
           margin="dense"
           id="name"
           label="Category Parent"
           type="text"
           variant="outlined"
+          value={values.parent}
+          onChange={handleChange("parent")}
           fullWidth
-          disabled
+          
         />
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose} color="primary">
           Cancel
         </Button>
-        <Button onClick={handleClose} color="primary">
+        <Button onClick={handleAdd} color="primary">
           Save
         </Button>
       </DialogActions>

@@ -65,6 +65,7 @@ const ItemListPage = (props) => {
   const [products, setProducts]=useState([]);
 
   useEffect(()=>{
+    /*
     axios.get("https://localhost:8000/bidder/products")
     .then(function (res){
       const listItems=[];
@@ -81,8 +82,8 @@ const ItemListPage = (props) => {
     })
     .catch(function(err){
       console.log(err);
-    });
-  });
+    }); */
+  },[]);
 
   // <-- delete member 
   return(
@@ -145,7 +146,7 @@ const ItemListPage = (props) => {
             load={user.success}
           />: */}
           <EnhancedTable
-          rows={products}
+          rows={sampleItems}
           headerList = {ITEMS_HEADERS}
           //conditions={MEMBER_SEARCH}
           load={true}
