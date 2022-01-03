@@ -136,10 +136,15 @@ const LoginPage = (props) => {
         setCheckLogin(true);
 
         axios.post("http://localhost:8000/user/auth/login",{
-          values
+          "usr_nm":values.username,
+          "usr_pw":values.password
         })
         .then(function(res){
-
+          if (res.data.error)
+            console.log("Can't login");
+          else
+            localStorage.setItem("user_session",res.data);
+          
         }).catch(function(err){
           console.log(err);
         });

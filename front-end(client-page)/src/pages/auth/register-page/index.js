@@ -54,6 +54,7 @@ const RegisterPage = (props) => {
         username: 'ss',
         password: 'ss',
         email: 'ss',
+        address: "ss"
     });
     
     const [values, setValues] = useState({
@@ -61,6 +62,7 @@ const RegisterPage = (props) => {
         username: '',
         password: '',
         email: '',
+        address:"",
         showPassword: false,
     });
 
@@ -100,13 +102,6 @@ const RegisterPage = (props) => {
       setCheckErrorUsername(false);
       setOpen(isOpen);
 
-      axios.post("http://localhost:8000/user/auth/signup",{
-        
-      }).then(function(res){
-          
-      }).catch(function (err){
-        console.log(err);
-      });
     }, [isOpen]);
 
     //HANDLE CLOSE POPUP
@@ -120,7 +115,8 @@ const RegisterPage = (props) => {
           fullname: '',
           username: '',
           password: '',
-          email: ''
+          email: '',
+          address:""
         })
         setCheckError(false);
         setOpenState(false);
@@ -159,6 +155,8 @@ const RegisterPage = (props) => {
     if(values.password.trim().length === 0|| values.password.trim().length !== values.password.length)
     setError({ ...values, password: "" });
 
+    
+
   
 
     else if(values.fullname.trim().length !== 0 && values.username.trim().length !== 0 && values.password.trim().length !== 0 && values.email.trim().length !== 0
@@ -167,6 +165,22 @@ const RegisterPage = (props) => {
       setEnableCreateBtn(false);
       setLoading(true);
       registerReq(values);
+
+
+      axios.post("http://localhost:8000/user/auth/signup",{
+        usr_nm:values.username,
+        usr_pw:values.password,
+        usr_email:values.email,
+        usr_addr:values.address
+      }).then(function(res){
+        if (res.data.message)
+          console.log("Failed to sign up");
+        else
+          console.log(res);
+          
+      }).catch(function (err){
+        console.log(err);
+      });
     }
   }
   const [checkErrorEmail, setCheckErrorEmail] = useState(false);
@@ -284,6 +298,17 @@ const RegisterPage = (props) => {
           {/* {checkError && error.email.trim().length === 0 && values.email.trim().length === 0 &&  <FormHelperText id="component-error-text" error={true}>Email is required</FormHelperText>}  */}
         </FormControl>
 
+        <FormControl fullWidth className={classes.margin} variant="outlined">
+          <InputLabel htmlFor="outlined-adornment-address">Address</InputLabel>
+          <OutlinedInput
+            id="outlined-adornment-address"
+            value={values.amount}
+            error={(checkError || checkErrorFName) && error.address.trim().length === 0 && values.address.trim().length === 0 ? true : false}
+            onChange={handleChange('address')}
+            onBlur={handleFNameError}
+            labelWidth={60}
+          />
+        </FormControl>
 
         </DialogContent>
         <DialogActions>

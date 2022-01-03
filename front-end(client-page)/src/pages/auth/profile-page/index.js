@@ -30,6 +30,7 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import FormHelperText from '@material-ui/core/FormHelperText';
+import axios from 'axios';
 
 function CircularProgressWithLabel(props) {
     return (
@@ -92,7 +93,7 @@ const ProfilePage = (props)=>{
   const [error, setError] = useState({
     fullname: 'ss',
     password: 'ss',
-      confirmpassword: 'ss',
+    confirmpassword: 'ss',
   });
   const [open, setOpen] = React.useState(false);
   const [checkError, setCheckError] = useState(false);
@@ -158,12 +159,25 @@ const ProfilePage = (props)=>{
         content: "Save profile successfully !",
         type: 'success'
       });
-    //updateAvatarReq(avatarId);
-    setEnableCreateBtn(false);
-    setLoading(true);
-    updateProfileReq(profileInfo);
-    handleClose();
-  }
+      //updateAvatarReq(avatarId);
+      setEnableCreateBtn(false);
+      setLoading(true);
+      updateProfileReq(profileInfo);
+      handleClose();
+    
+      axios.patch("http://localhost:8000/info/update",{
+        usr_fullname: profileInfo.fullname,
+        usr_email: profileInfo.email
+      })
+      .then(function (res){
+        console.log(res);
+      })
+      .catch(function(err){
+        console.log(err);
+      });
+    }
+
+    
   };
 
   useEffect(()=>{
@@ -248,6 +262,16 @@ const ProfilePage = (props)=>{
           setEnableCreateBtn(false);
           setLoading(true);
           updatePasswordReq(passwordInfo);
+
+          axios.patch("http://localhost:8000/info/update",{
+            usr_pw: passwordInfo.password
+          })
+          .then(function (res){
+            console.log(res);
+          })
+          .catch(function(err){
+            console.log(err);
+          });
         }
 
   };

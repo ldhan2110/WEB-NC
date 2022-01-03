@@ -6,6 +6,7 @@ import {ADD_NEW_TESTPLAN_REQ, GET_ALL_TESTPLAN_REQ, RESET_ADD_NEW_TESTPLAN} from
 import {DISPLAY_MESSAGE} from '../../../redux/message/constants';
 import { connect } from 'react-redux';
 import {GET_ALL_BUILD_ACTIVE_REQ } from '../../../redux/build-release/constants';
+import axios from "axios";
 import {
   Dialog,
   DialogActions,
@@ -46,6 +47,15 @@ const RemoveItemPopup = (props) => {
     setOpenPopup(false);
   };
 
+  const handleDelete = function (){
+    axios.delete("http://localhost:8000/product/delete").then(function (res){
+      
+    })
+    .catch(function (err){
+      console.log(err);
+    });
+  }
+
   useEffect(()=>{
     setOpen(isOpen);
   },[isOpen])
@@ -75,7 +85,7 @@ const RemoveItemPopup = (props) => {
         />
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose} color="primary">
+        <Button onClick={handleDelete} color="primary">
           SUBMIT
         </Button>
         <Button onClick={handleClose} color="red">

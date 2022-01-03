@@ -4,6 +4,7 @@ import Carousel from '../../../components/Carousel';
 import RemoveItemPopup from '../item-remove-popup/index.js';
 import { withStyles } from '@material-ui/core/styles';
 import styles from "./styles";
+import axios from "axios";
 import {
     Grid,
     Typography,
@@ -21,10 +22,34 @@ const imgData = [
 
 const ItemListPage = (props) => {
     const [openPopup, setOpenPopup] = useState(false);
+    const [detail,setDetails]=useState({
+      name:"",
+      owner:"",
+      current_price: 0,
+      highest_bidder: "",
+      auction_duration: "",
+      status:""
+    });
 
     const handleOpenRemovePopup = () => {
       setOpenPopup(true);
     }
+
+    useEffect(()=>{
+      axios.get("http://localhost:8000/products/")
+      .then(function (res){
+        const product={};
+        product.name=res.data.item_nm;
+        product.owner=res.data.owner_nm;
+        product.current_price=res.data.current_price;
+        product.highest_bidder=res.data.current_bidder_nm;
+        product.auction_duration=res.data.auction_start+" - "+res.data.auction_end;
+        product.status=res.data.active? "In Auction":"Sold";
+        setDetails(detail);
+      }).catch(function (err){
+        console.log(err);
+      });
+    },[]);
 
     // <-- delete member 
     const {classes} = props;
@@ -55,22 +80,22 @@ const ItemListPage = (props) => {
           <Grid item xs={6}>
             <Grid container className={classes.content}>
                 <Grid item xs={6} spacing={2}>
-                    <p><strong>Item Name:</strong> Devil Amulet</p>
+                    <p><strong>Item Name:</strong> {detail.name}</p>
                 </Grid>
                 <Grid item xs={6}>
-                    <p><strong>Owner:</strong> Zhou Yu</p>
+                    <p><strong>Owner:</strong> {detail.owner}</p>
                 </Grid>
                 <Grid item xs={6}>
-                    <p><strong>Current Price:</strong> 15.000 VND</p>
+                    <p><strong>Current Price:</strong> {detail.current_price} VND</p>
                 </Grid>
                 <Grid item xs={6}>
-                    <p><strong>Highest Bidder:</strong> Lu Bu</p>
+                    <p><strong>Highest Bidder:</strong> {detail.highest_bidder}</p>
                 </Grid>
                 <Grid item xs={12}>
-                    <p><strong>Auction Duration:</strong> 12/10/2021 - 20/10/2022</p>
+                    <p><strong>Auction Duration:</strong> {detail.auction_duration}</p>
                 </Grid>
                 <Grid item xs={12}>
-                    <p><strong>Status:</strong> <Chip size="small" mr={1} mb={1} label="In Auction"  /></p>
+                    <p><strong>Status:</strong> <Chip size="small" mr={1} mb={1} label={detail.status}  /></p>
                 </Grid>
             </Grid>
           </Grid>

@@ -150,10 +150,11 @@ const ResetPassword = (props) => {
           confirmResetPasswordReq(values);
 
           axios.post("http://localhost:8000/user/auth/reset",{
-            values
+            usr_pw:values.password,
+            otp:values.resettoken
           })
           .then(function (res){
-
+            console.log(res);
           })
           .catch(function (err){
             console.log(err);

@@ -121,4 +121,25 @@ router.post("/auth/reset",async function(req,res){
     }
 });
 
+
+router.patch("/info/update",async function(req,res){
+    try {
+        const body=req.body;
+        const filter={usr_nm:body.usr_nm};
+        const update={};
+        if (body.usr_fullname) update.usr_fullname=body.usr_fullname;
+        if (body.usr_email) update.usr_fullname=body.usr_email;
+        if (body.usr_dob) update.usr_dob=body.usr_body;
+        if (body.usr_pw) update.usr_pw=bcrypt.hashSync(body.usr_pw,10);
+
+        const ret=await userModel.updateInfo(filter,update);
+        if (ret==null)
+            res.send("Changed not successfully");
+        else
+            res.send("Changed successfully");    
+    } catch (error) {
+        console.log(error);
+    }
+});
+
 export default router;
