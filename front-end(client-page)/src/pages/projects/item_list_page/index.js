@@ -10,6 +10,7 @@ import Pagination from '../../../components/Pagination/index';
 import IconButton from '@material-ui/core/IconButton';
 import NewProjectPopup from '../new-project-popup/index';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import axios from "axios";
 import {
     Button,
     Grid,
@@ -52,26 +53,31 @@ const ProjectList = (props)=>{
     const handleOpenNewProjectPopup = ()=>{
         setOpenNewProject(true);
     }
-
+    
     useEffect(()=>{
-        axios.get("https://localhost:8000/bidder/products")
+        axios.get("http://localhost:8000/bidder/products")
         .then(function (res){
+            console.log(res);
           const listItems=[];
           for (var data of res.data){
             const item={};
-            item.id=data._id;
-            item.item_name=data.item_name;
-            item.item_owner=data.item_owner;
-            item.status=data.active ? 1:0;
+            item._id=data._id;
+            item.item_name=data.item_nm;
+            item.item_owner=data.owner_nm;
+            item.status=data.active ? "In Auction":"Removed";
             item.create_date=data.create_date;
+            item.price=data.init_price;
+            item.auction_end=data.auction_end;
             listItems.push(item);
           }
-          setProducts(listItems);
+          console.log("LIST:",listItems);
+          setListItem(listItems);
         })
         .catch(function(err){
           console.log(err);
         });
-      });
+    },[!openNewProject]);
+    
     // useEffect(()=>{
     //     project.success = "";
     //     getProjectReq();
@@ -154,7 +160,7 @@ const ProjectList = (props)=>{
             >
                 <Grid item key="header-sm">
                     <Typography variant="h3" gutterBottom display="inline">
-                        Aution Items
+                        Auction Items
                     </Typography>
                 </Grid>
                 <Grid item key="add-sm">

@@ -97,12 +97,12 @@ const CategoryManagementPage = (props) => {
     }).catch(function (err){
       console.log(err);
     });
-  },[]);
+  },[!openPopup]);
 
 
   const renderTree = (nodes) => {    
     return (
-    <TreeItem key={nodes.id} nodeId={nodes.id} label={nodes.name}>
+    <TreeItem key={nodes._id} nodeId={nodes._id} label={nodes.name}>
       {Array.isArray(nodes.children)
         ? nodes.children.map((node) => renderTree(node))
         : null}
@@ -134,9 +134,9 @@ const CategoryManagementPage = (props) => {
   };
 
   const render = function (tree){
-    console.log("Tree:",tree);
+    //console.log("Tree:",tree);
     const tmp=handleNodes(tree);
-    console.log(tmp);
+    //console.log(tmp);
     const data=[];
     for (var td of tmp){
       data.push(

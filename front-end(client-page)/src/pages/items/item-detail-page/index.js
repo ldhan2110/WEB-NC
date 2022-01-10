@@ -36,7 +36,10 @@ const ItemListPage = (props) => {
     }
 
     useEffect(()=>{
-      axios.get("http://localhost:8000/products/")
+      const pathname=window.location.pathname;
+      const tmp=pathname.split("/");
+
+      axios.get(`http://localhost:8000/products/${tmp[2]}`)
       .then(function (res){
         const product={};
         product.name=res.data.item_nm;
@@ -44,11 +47,12 @@ const ItemListPage = (props) => {
         product.current_price=res.data.current_price;
         product.highest_bidder=res.data.current_bidder_nm;
         product.auction_duration=res.data.auction_start+" - "+res.data.auction_end;
-        product.status=res.data.active? "In Auction":"Sold";
+        product.status=res.data.active? "In Auction": "Sold";
         setDetails(detail);
       }).catch(function (err){
         console.log(err);
-      });
+      }); 
+      
     },[]);
 
     // <-- delete member 
@@ -62,7 +66,7 @@ const ItemListPage = (props) => {
         >
           <Grid item>
             <Typography variant="h3" gutterBottom display="inline">
-              Item Detail - Devil Amulet
+              Item Detail - {detail.name}
             </Typography>         
           </Grid>
           <Grid item>

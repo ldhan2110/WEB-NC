@@ -78,21 +78,22 @@ const NewCategoryPopup = (props) => {
 
     if (values.name!==""){
       if (values.parent!=="") {
-        const found=categories.find(name => name===values.parent);
+        console.log(categories);
+        const found=categories.find(category => category.name===values.parent);
+        console.log("Found is",found);
         if (found!==undefined){
           setError({});
           addCategory(values);
+          setValues({name: "",parent:""});
           setOpenPopup(false);
         } else {
-          displayMsg({
-            content: "Category Parent does not exist!",
-            type: 'error'
-          });
+          console.log("What");
         }
       } else {
         values.parent=null;
         setError({});
         addCategory(values);
+        setValues({name:""});
         setOpenPopup(false);
       }
     }
@@ -100,6 +101,7 @@ const NewCategoryPopup = (props) => {
   };
 
   function addCategory(data){
+    console.log("ADDING");
     axios.post("http://localhost:8000/admin/category/add",data)
     .then(function (res){
       console.log(res);

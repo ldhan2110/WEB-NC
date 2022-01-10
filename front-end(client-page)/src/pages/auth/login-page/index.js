@@ -92,9 +92,9 @@ const LoginPage = (props) => {
     //   }
     // }, [accountInfo, history])
 
-    useEffect(()=>{
-      history.push("/auction-items");
-    }, [])
+    // useEffect(()=>{
+      
+    // }, [])
 
     //CHANGE CHECKBOX
     const handleChange = (prop) => (event) => {
@@ -123,10 +123,10 @@ const LoginPage = (props) => {
       setCheckError(true);
 
       if(values.username.trim().length === 0)
-    setError({ ...values, username: "" });
+        setError({ ...values, username: "" });
 
-    if(values.password === "")
-    setError({ ...values, password: "" }); 
+      if(values.password === "")
+        setError({ ...values, password: "" }); 
       if(values.username.trim().length !== 0 && values.password !== ""  )
       { 
         setError({});
@@ -142,8 +142,10 @@ const LoginPage = (props) => {
         .then(function(res){
           if (res.data.error)
             console.log("Can't login");
-          else
-            localStorage.setItem("user_session",res.data);
+          else {
+            localStorage.setItem("token",res.data.accessToken);
+            history.push("/auction-items");
+          }            
           
         }).catch(function(err){
           console.log(err);
@@ -168,7 +170,7 @@ const LoginPage = (props) => {
                 <InputLabel htmlFor="outlined-adornment-username">Username</InputLabel>
                 <OutlinedInput 
                     id="outlined-adornment-username"
-                    value={values.username || ''}
+                    value={values.username}
                     onChange={handleChange('username')}
                     error={checkError && error.username == 0 && values.username == 0 ? true : false}
                     labelWidth={60}
