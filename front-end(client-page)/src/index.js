@@ -1,15 +1,13 @@
-import 'react-app-polyfill/ie11';
-import 'react-app-polyfill/stable';
-import { PersistGate } from 'redux-persist/integration/react'
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import { Provider } from 'react-redux';
-import store from './redux/store/index';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import { StateProvider } from "./StateProvider/StateProvider";
+import { InitialState, Reducer } from "./Reducer/Reducer";
 
 ReactDOM.render(
-  <Provider store={store.store}>
-      <PersistGate loading={null} persistor={store.persistor}>
-             <App />
-      </PersistGate>
-  </Provider>, document.getElementById('root'));
+  <StateProvider initialState={InitialState} reducer={Reducer}>
+    <App />
+  </StateProvider>,
+  document.getElementById("root")
+);
